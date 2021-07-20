@@ -10,11 +10,20 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { MatIconModule } from '@angular/material/icon';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    UserRegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +33,13 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule,
+    MatRadioModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

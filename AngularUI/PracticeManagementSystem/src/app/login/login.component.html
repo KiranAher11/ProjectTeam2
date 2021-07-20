@@ -1,7 +1,14 @@
+
 <mat-card>
     <mat-card-content>
-        <div class="header">
+        <!-- <div class="header">
             <h1>CT GENERAL HOSPITAL</h1>
+        </div>  -->
+        <div class="header">
+            <picture>
+                <source media='(min-width:0px)' >
+                <img mat-card-image src="assets/images/ct_logo.PNG" alt="Photo of a Shiba Inu">
+            </picture>
         </div>
         <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
             <div class="emailInput">
@@ -14,26 +21,31 @@
                 </mat-form-field>
             </div>
             <div>
-                <span>
-                    <a class="aLink" routerLink="/auth/forgot-password">Forgot Password?</a>
-                </span>
+            <span>
+                <a class="aLink" routerLink="/auth/forgot-password">Forgot Password?</a>
+            </span>
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Password</mat-label>
                 <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required/>
                 <button mat-icon-button matSuffix (click)="hide =!hide"
-                [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
-            <mat-icon>
-                {{ hide ? 'visibility_off' : 'visibility'}}
-            </mat-icon>
-            </button>
-            <mat-error *ngIf="!loginForm.controls['password'].valid">
-                Password is required
-            </mat-error>
+                    [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                    <mat-icon>
+                        {{ hide ? 'visibility_off' : 'visibility'}}
+                    </mat-icon>
+                </button>
+                <mat-error *ngIf="!loginForm.controls['password'].valid">
+                    Password is required
+                </mat-error>
             </mat-form-field>
         </div>
-        <button mat-flat-button color="primary">Login</button>
+        <button mat-raised-button color="primary" class="login-btn">Login</button>
+
         <div class = "button-row">
-            <p>New to CT General?</p><button mat-flat-button color="primary">Sign Up</button>
+            <!-- <a routerLink="/dashboard">Dashboard</a> -->
+
+            <a routerLink="user-registration"><p style="font-family: 'Times New Roman';font-weight: bolder;">New to CT General?
+                <span style="color:blue;font-weight: bolder;">Sign Up</span></p>
+            </a>
       </div>
         </form>
 
