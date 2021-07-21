@@ -1,11 +1,16 @@
 package com.example.model;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -19,13 +24,22 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String password;
-	private String gmail;
+	private String email;
 	private String gender;
 	
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="role_id")
-	private Role role;
+	/*
+	 * @ManyToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name="role_id") private Role role;
+	 */
+	
+	 @Column(name = "active")
+	 private int active;
+	 
+	 @ManyToMany(cascade=CascadeType.ALL)
+	 @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
+	 private Set<Role> roles;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="title_id")
@@ -55,12 +69,12 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getGmail() {
-		return gmail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setGmail(String gmail) {
-		this.gmail = gmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -79,13 +93,27 @@ public class User {
 		this.gender = gender;
 	}
 
-	public Role getRole() {
-		return role;
-	}
+	/*
+	 * public Role getRole() { return role; }
+	 * 
+	 * public void setRole(Role role) { this.role = role; }
+	 */
+	
+	 public int getActive() {
+		  return active;
+		 }
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+		 public void setActive(int active) {
+		  this.active = active;
+		 }
+
+		 public Set<Role> getRoles() {
+		  return roles;
+		 }
+
+		 public void setRoles(Set<Role> roles) {
+		  this.roles = roles;
+		 }
 
 	public Title getTitle() {
 		return title;
@@ -97,8 +125,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [adminId=" + adminId + ", firstName=" + firstName + ", lastName=" + lastName + ", gmail=" + gmail
-				+ ", password=" + password + ", gender=" + gender + ", role=" + role + ", title=" + title + "]";
+		return "User [adminId=" + adminId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", password=" + password + ", gender=" + gender +  ", title=" + title + "]";
 	}
 	
 	
