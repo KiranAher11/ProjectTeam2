@@ -41,9 +41,11 @@ public class User {
 	 @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
 	 private Set<Role> roles;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="title_id")
-	private Title title;
+		/*
+		 * @ManyToOne(cascade = CascadeType.ALL)
+		 * 
+		 * @JoinColumn(name="title_id") private Title title;
+		 */
 
 	public int getAdminId() {
 		return adminId;
@@ -115,18 +117,16 @@ public class User {
 		  this.roles = roles;
 		 }
 
-	public Title getTitle() {
-		return title;
-	}
-
-	public void setTitle(Title title) {
-		this.title = title;
-	}
+			/*
+			 * public Title getTitle() { return title; }
+			 * 
+			 * public void setTitle(Title title) { this.title = title; }
+			 */
 
 	@Override
 	public String toString() {
 		return "User [adminId=" + adminId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", gender=" + gender +  ", title=" + title + "]";
+				+ ", password=" + password + ", gender=" + gender +  "]";
 	}
 	
 	
