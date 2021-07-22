@@ -3,6 +3,7 @@ package com.java.configuration;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -18,10 +20,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
-	 @Autowired
+	 @Autowired(required=true)
 	 private BCryptPasswordEncoder bCryptPasswordEncoder;
 	 
-	 @Autowired
+	 @Autowired(required=true)
 	 private DataSource dataSource;
 	 
 	 private final String USERS_QUERY = "select email, password, active from user where email=?";
@@ -39,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	 @Override
 	 protected void configure(HttpSecurity http) throws Exception{
 	  http.authorizeRequests()
-	   .antMatchers("/").permitAll()
+	   .antMatchers("/**").permitAll()
 	   .antMatchers("/login").permitAll()
 	   .antMatchers("/signup").permitAll()
 	   .antMatchers("/home/**").hasAuthority("ADMIN").anyRequest()
@@ -54,7 +56,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	   .and().rememberMe()
 	   .tokenRepository(persistentTokenRepository())
 	   .tokenValiditySeconds(60*60)
-	   .and().exceptionHandling().accessDeniedPage("/access_denied");
+	   .and().exceptionHandling().accessDeniedPage("/access_denied")
+	   ;
 	 }
 	 
 	 @Bean
@@ -64,5 +67,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	  
 	  return db;
 	 }
+	 
+	 
+	 
+		/*
+		 * @Bean public PasswordEncoder passwordEncoder() { return new
+		 * BCryptPasswordEncoder(); }
+		 */
 
 }
