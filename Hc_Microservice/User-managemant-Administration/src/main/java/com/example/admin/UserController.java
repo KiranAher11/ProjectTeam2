@@ -1,6 +1,5 @@
 package com.example.admin;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -25,11 +24,11 @@ public class UserController {
 @Autowired(required=true)
 private UserService userService;
 
-@RequestMapping(value= {"/", "/loginn"}, method=RequestMethod.GET)
+@RequestMapping(value= {"/", "/login"}, method=RequestMethod.GET)
 public ModelAndView login() {
  ModelAndView model = new ModelAndView();
  
- model.setViewName("user/loginn");
+ model.setViewName("user/login");
  return model;
 }
 
@@ -44,7 +43,7 @@ public ModelAndView signup() {
 }
 
 @RequestMapping(value= {"/signup"}, method=RequestMethod.POST)
-public ModelAndView createUser(@Valid User user, BindingResult bindingResult) {
+public ModelAndView createUser( User user, BindingResult bindingResult) {
  ModelAndView model = new ModelAndView();
  User userExists = userService.findUserByEmail(user.getEmail());
  
@@ -69,7 +68,7 @@ public ModelAndView home() {
  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
  User user = userService.findUserByEmail(auth.getName());
  
- model.addObject("userName", user.getFirstName() + " " + user.getLastName());
+ model.addObject("userName", user.getFirstname() + " " + user.getFirstname());
  model.setViewName("home/home");
  return model;
 }

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dao.RoleRepository;
 import com.example.dao.UserRepository;
-import com.example.model.Roles;
+import com.example.model.Role;
 import com.example.model.User;
 import com.example.service.UserService;
 
@@ -25,8 +25,8 @@ public class UserserviceImpl implements UserService{
 	 private RoleRepository roleRepository;
 	 
 		
-		  @Autowired(required=true) private PasswordEncoder
-		 passwordEncoder;
+		  @Autowired(required=true) 
+		  private PasswordEncoder passwordEncoder;
 		 
 	 
 	 @Override
@@ -34,8 +34,8 @@ public class UserserviceImpl implements UserService{
 			
 			user.setPassword(passwordEncoder().encode(user.getPassword()));
 			  user.setActive(1);
-			  Roles userRole = roleRepository.findByRole("ADMIN");
-			  user.setRoles(new HashSet<Roles>(Arrays.asList(userRole)));
+			  Role userRole = roleRepository.findByRole("ADMIN");
+			  user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 			  userRepository.save(user);
 			
 		}

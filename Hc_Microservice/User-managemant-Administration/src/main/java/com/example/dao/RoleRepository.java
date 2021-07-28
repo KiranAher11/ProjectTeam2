@@ -3,10 +3,10 @@ package com.example.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.model.Roles;
+import com.example.model.Role;
 
 @Repository("roleRepository")
-public interface RoleRepository extends JpaRepository<Roles, Long> {
+public interface RoleRepository extends JpaRepository<Role, Long> {
 
-	Roles findByRole(String role);
+	Role findByRole(String role);
 }
