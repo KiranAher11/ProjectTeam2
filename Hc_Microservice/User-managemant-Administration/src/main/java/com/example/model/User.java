@@ -11,21 +11,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="User")
+@Table(name = "\"User\"")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int adminId;
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String password;
 	private String email;
 	private String gender;
+	
 	
 	
 	/*
@@ -39,18 +39,20 @@ public class User {
 	 
 	 @ManyToMany(cascade=CascadeType.ALL)
 	 @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
-	 private Set<Role> roles;
+	 private Set<Roles> roles;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="title_id")
-	private Title title;
+		/*
+		 * @ManyToOne(cascade = CascadeType.ALL)
+		 * 
+		 * @JoinColumn(name="title_id") private Title title;
+		 */
 
-	public int getAdminId() {
-		return adminId;
+	public int getId() {
+		return id;
 	}
 
-	public void setAdminId(int adminId) {
-		this.adminId = adminId;
+	public void setAdminId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -93,11 +95,11 @@ public class User {
 		this.gender = gender;
 	}
 
-	/*
-	 * public Role getRole() { return role; }
-	 * 
-	 * public void setRole(Role role) { this.role = role; }
-	 */
+	
+	  public Set<Roles> getRoles() { return roles; }
+	  
+	  public void setRoles(Set<Roles> roles) { this.roles = roles; }
+	 
 	
 	 public int getActive() {
 		  return active;
@@ -107,26 +109,18 @@ public class User {
 		  this.active = active;
 		 }
 
-		 public Set<Role> getRoles() {
-		  return roles;
-		 }
+		
 
-		 public void setRoles(Set<Role> roles) {
-		  this.roles = roles;
-		 }
-
-	public Title getTitle() {
-		return title;
-	}
-
-	public void setTitle(Title title) {
-		this.title = title;
-	}
+			/*
+			 * public Title getTitle() { return title; }
+			 * 
+			 * public void setTitle(Title title) { this.title = title; }
+			 */
 
 	@Override
 	public String toString() {
-		return "User [adminId=" + adminId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", gender=" + gender +  ", title=" + title + "]";
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", password=" + password + ", gender=" + gender +  "]";
 	}
 	
 	

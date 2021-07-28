@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,19 +19,17 @@ import com.example.service.UserService;
 
 
 
-@RestController
-@RequestMapping("/user")
-@CrossOrigin("")
+@Controller
 public class UserController {
 
-@Autowired
+@Autowired(required=true)
 private UserService userService;
 
-@RequestMapping(value= {"/", "/login"}, method=RequestMethod.GET)
+@RequestMapping(value= {"/", "/loginn"}, method=RequestMethod.GET)
 public ModelAndView login() {
  ModelAndView model = new ModelAndView();
  
- model.setViewName("user/login");
+ model.setViewName("user/loginn");
  return model;
 }
 
@@ -81,6 +80,5 @@ public ModelAndView accessDenied() {
  model.setViewName("errors/access_denied");
  return model;
 }
-	
-	
 }
+
