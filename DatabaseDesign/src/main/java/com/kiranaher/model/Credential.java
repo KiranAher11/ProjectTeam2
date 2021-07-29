@@ -23,13 +23,17 @@ public class Credential {
 	//private String user_userName;
 	private String password;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "patient_id" , referencedColumnName = "patientId")
-	private Patient patient;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id" , referencedColumnName = "userId")
-	private User user;
+	/*
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "patient_id" , referencedColumnName = "patientId") private
+	 * Patient patient;
+	 * 
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "user_id" , referencedColumnName = "userId") private User
+	 * user;
+	 */
 
 	public int getCredential_id() {
 		return credential_id;
@@ -63,20 +67,14 @@ public class Credential {
 		this.password = password;
 	}
 
-	public Patient getPatient() {
-		return patient;
-	}
-
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	/*
+	 * public Patient getPatient() { return patient; }
+	 * 
+	 * public void setPatient(Patient patient) { this.patient = patient; }
+	 * 
+	 * public User getUser() { return user; }
+	 * 
+	 * public void setUser(User user) { this.user = user; }
+	 */
 	
 }

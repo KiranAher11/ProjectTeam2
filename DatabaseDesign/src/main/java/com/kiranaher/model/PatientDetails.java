@@ -13,7 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-//@Entity
+@Entity
 @Data
 @NoArgsConstructor
 
@@ -34,5 +34,6 @@ public class PatientDetails {
       private String language_known;
       private String contact_number;
       private String home_address;
+     // private Kin kin;
       	
 }

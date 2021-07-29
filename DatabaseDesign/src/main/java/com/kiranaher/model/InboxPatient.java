@@ -1,5 +1,7 @@
 package com.kiranaher.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,23 +14,23 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Entity
-@Table(name="patient_allergy")
+@Table(name = "inbox_patient")
 @NoArgsConstructor
-public class PatientAllergy {
+@Data
+public class InboxPatient {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private int patient_visit_id;
-	private String allergy_name;
-	private String credated_by;
-	private String allergy_description;
-	
-	private String isActive;
+	private String meetingTitle;
+	private String decription;
+	private String physician;
+	private Date date;
+	private String time;
+	private String rescheduledHistory;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "patientId")
 	private Patient patient;
-	
 }

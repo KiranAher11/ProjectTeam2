@@ -4,6 +4,10 @@
         <!-- <div class="header">
             <h1>CT GENERAL HOSPITAL</h1>
         </div>  -->
+       <div id = "formContent">
+            <div class = "alert alert-warning" *ngif = 'invalidLogin'{{errorMessage}}></div>
+            <div class = "alert alert-success" *ngif = 'invalidLogin'{{successMessage}}></div>
+        </div>
         <div class="header">
             <picture>
                 <source media='(min-width:0px)' >
@@ -11,22 +15,21 @@
             </picture>
         </div>
         <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+            
             <div class="emailInput">
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input formControlName="email" matInput placeholder="Enter email address" required />
+                    <input id = "email" formControlName="email"  matInput placeholder="Enter email address" required />
                     <mat-error *ngIf="!loginForm.controls['email'].valid">
                         Email is required
                     </mat-error>
                 </mat-form-field>
             </div>
             <div>
-            <span>
-                <a class="aLink" routerLink="/auth/forgot-password">Forgot Password?</a>
-            </span>
+            
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Password</mat-label>
-                <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required/>
+                <input  type= "password" id = "password" formControlName="password"  matInput [type]="hide ? 'password' : 'text'" required/>
                 <button mat-icon-button matSuffix (click)="hide =!hide"
                     [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
                     <mat-icon>
@@ -40,13 +43,20 @@
         </div>
         <button mat-raised-button color="primary" class="login-btn">Login</button>
 
-        <div class = "button-row">
+        <div class = "button-row" style="text-align:center">
+            
             <!-- <a routerLink="/dashboard">Dashboard</a> -->
-
+            <tr>
+            
             <a routerLink="user-registration"><p style="font-family: 'Times New Roman';font-weight: bolder;">New to CT General?
                 <span style="color:blue;font-weight: bolder;">Sign Up</span></p>
             </a>
+            <a routerLink="/auth/forgot-password"><p style="font-family: 'Times New Roman';font-weight: bolder;">Forgot Password?
+            </a>
+        
+        </tr>
       </div>
+      
         </form>
 
        

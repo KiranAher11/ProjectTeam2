@@ -1,13 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder,Validators } from '@angular/forms';
+
+import {AuthService} from '../services/AuthService';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  
+  email:any;
+  password:any;
+  errorMessage = "Invalid Credentials";
+  successMessage:any;
+  invalidLogin = false;
+  loginSuccess = false;
   hide: boolean=false;
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder,private authService:AuthService) {
 
    }
 
@@ -19,11 +29,20 @@ export class LoginComponent implements OnInit {
       })
     
       onLogin(){
-        if(!this.loginForm.valid){
-          return;
-        }
+       this.authService.login(this.email,this.password).subscribe((result:any) => {
+         this.invalidLogin=false;
+         this.loginSuccess = true;
+         this.successMessage = "Login Successful";
+         
+       },() => {
+            this .invalidLogin = true;
+            this.loginSuccess = false;
+
+       });
         console.log(this.loginForm.value);
+        console.log("clicked");
       }
+      
   }
   
 
