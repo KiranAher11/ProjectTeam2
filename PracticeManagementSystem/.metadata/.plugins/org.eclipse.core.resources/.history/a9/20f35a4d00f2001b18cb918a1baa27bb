@@ -1,0 +1,6 @@
+package com.citiustech.restcontroller;
+
+public class AuthenticationRestController {
+	
+
+}

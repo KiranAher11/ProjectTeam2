@@ -1,0 +1,5 @@
+package com.citiustech.util;
+@Component
+public class JwtUtils {
+
+}

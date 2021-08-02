@@ -1,0 +1,92 @@
+package com.citiustech.request;
+
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import com.citiustech.model.EGender;
+import com.citiustech.model.Role;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Entity
+@Table(name = "signup_tab")
+public class SignUpRequest {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@NotNull
+    @Size(max = 65)
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Size(max = 65)
+    @Column(name = "last_name")
+    private String lastName;
+	
+	@NotBlank
+	@Size(max=50)
+	@Email
+	@NonNull
+	private String email;
+	
+	@Size(max = 15)
+    private String contactNumber;
+	
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10)
+	private EGender gender;
+    
+    @Temporal(TemporalType.DATE)
+    @Column(name = "dob")
+    private Date dateOfBirth;
+	
+
+    @NotBlank
+	@Size(max=120)
+	@NonNull
+	private String password;
+    
+    @NotBlank
+	@Size(max=120)
+	@NonNull
+	private String confirmPassword;
+     
+    @ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "_roles_tab",
+	joinColumns = @JoinColumn(name = "user_id"),
+	inverseJoinColumns = @JoinColumn(name = "role_id")
+	)
+	private Set<Role> roles;
+
+    
+	
+
+}

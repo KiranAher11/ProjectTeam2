@@ -1,0 +1,16 @@
+package com.citiustech.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.Data;
+@Entity
+@Data
+@Table(name = "roles_tab")
+public class Role {
+	
+	private Integer id;
+	private ERole name;
+	 
+
+}

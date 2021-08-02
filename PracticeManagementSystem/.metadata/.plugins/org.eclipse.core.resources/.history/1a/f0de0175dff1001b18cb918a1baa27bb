@@ -1,0 +1,11 @@
+package com.citiustech.util;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.citiustech.repo.RoleRepository;
+
+public class RolesUtils {
+	@Autowired
+	private RoleRepository repository;
+
+}

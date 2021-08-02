@@ -1,0 +1,53 @@
+package com.citiustech.request;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import com.citiustech.model.EGender;
+
+import lombok.Data;
+import lombok.NonNull;
+
+@Data
+public class SignUpRequest {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	@NotBlank
+	@Size(max=50)
+	@Email
+	@NonNull
+	private String email;
+	
+
+    @Column(name = "contact_number")
+    @Size(max = 15)
+    private String contactNumber;
+	
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10)
+	private EGender gender;
+	
+	private Date dateOfBirth;
+	
+	private String password;
+	
+	private String confirmPassword;
+	
+
+}

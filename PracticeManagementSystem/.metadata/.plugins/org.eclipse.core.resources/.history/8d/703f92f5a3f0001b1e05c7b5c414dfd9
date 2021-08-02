@@ -1,0 +1,29 @@
+package com.citiustech.model;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "users_tab",
+uniqueConstraints = {
+		@UniqueConstraint(columnNames = "username"),
+		@UniqueConstraint(columnNames = "email")
+})
+public class User {
+	
+	private Long id;
+	private String email;
+	private String password;
+	private Set<Role> roles;
+
+}

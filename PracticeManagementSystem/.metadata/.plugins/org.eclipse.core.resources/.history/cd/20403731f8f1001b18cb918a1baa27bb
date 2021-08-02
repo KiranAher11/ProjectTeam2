@@ -1,0 +1,16 @@
+package com.citiustech.response;
+
+import lombok.Data;
+import lombok.NonNull;
+
+@Data
+public class JwtResponse {
+	
+	@NonNull
+	private String token;
+	
+	private String type = "Bearer";
+	
+	
+
+}

@@ -1,0 +1,31 @@
+package com.citiustech.util;
+
+import java.util.Date;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
+
+import com.citiustech.model.UserDetailsImpl;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
+@Component
+public class JwtUtils {
+	
+private String jwtSecret;
+
+private int jwtExpTimeInMs;
+
+public String generateToken(Authentication authentication) {
+	UserDetailsImpl userDetails =  (UserDetailsImpl) authentication.getPrincipal();
+	return Jwts.builder()
+			.setSubject(userDetails.getUsername())
+			.setIssuedAt(new Date())
+			.setExpiration(new Date(System.currentTimeMillis()+jwtExpTimeInMs))
+		    .signWith(SignatureAlgorithm.HS512, jwtSecret)
+		    .compact();
+		
+}
+
+}

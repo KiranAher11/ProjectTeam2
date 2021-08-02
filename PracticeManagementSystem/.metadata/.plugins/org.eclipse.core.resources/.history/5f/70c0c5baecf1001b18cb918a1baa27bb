@@ -1,0 +1,5 @@
+package com.citiustech.request;
+
+public class LoginRequest {
+
+}

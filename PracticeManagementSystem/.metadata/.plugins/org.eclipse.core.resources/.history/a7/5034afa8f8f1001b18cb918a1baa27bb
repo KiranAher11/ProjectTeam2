@@ -1,0 +1,5 @@
+package com.citiustech.response;
+
+public class MessageResponse {
+
+}

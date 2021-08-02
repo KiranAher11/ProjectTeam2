@@ -1,0 +1,81 @@
+package com.citiustech.model;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "register_user")
+public class RegisterUser  {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	
+	@NotNull
+	@Size(max = 25)
+	private String firstName;
+
+	@Size(max = 25)
+	private String lastName;
+
+	@NotBlank
+	@Size(max = 50)
+	@Email
+	@NonNull
+	private String email;
+
+	@Size(max = 15)
+	private String contactNumber;
+
+	@Enumerated(EnumType.STRING)
+	private EGender gender;
+
+	@Temporal(TemporalType.DATE)
+	private Date dateOfBirth;
+
+	@NotBlank
+	@Size(max = 120)
+	@NonNull
+	private String password;
+
+	@NotBlank
+	@Size(max = 120)
+	@NonNull
+	private String confirmPassword;
+
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+	
+	private Set<String> role;
+
+}
