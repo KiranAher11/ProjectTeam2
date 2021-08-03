@@ -24,6 +24,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -53,7 +55,10 @@ import { MatListModule } from '@angular/material/list';
     HttpClientModule,
     MatSidenavModule,
     MatMenuModule,
-    MatListModule   
+    MatListModule,
+    LayoutModule,
+    MatNativeDateModule,
+    MatDatepickerModule,  
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -17,7 +17,9 @@ const routes: Routes = [
     ]
   },
    { path: 'user-registration', component: UserRegistrationComponent },
-   { path: 'home', component: NavigationComponent }
+   { path: 'home', component: NavigationComponent },
+   { path: 'login', loadChildren: () => import(`./patient/patient.module`).then(m => m.PatientModule)},
+
 
 
 ];
