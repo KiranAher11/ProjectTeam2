@@ -19,13 +19,20 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
+import { NavigationComponent } from './navigation/navigation.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatMenu, MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    NavigationComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -43,8 +50,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatNativeDateModule,
     MatSelectModule,
     MatToolbarModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatListModule   
   ],
   providers: [],
   bootstrap: [AppComponent]
