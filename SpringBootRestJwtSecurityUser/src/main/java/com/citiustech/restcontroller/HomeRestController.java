@@ -19,6 +19,7 @@ public class HomeRestController {
 	@GetMapping("/user")
 	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 	public String userData() {
+		
 		return "User Data!";
 	}
 	

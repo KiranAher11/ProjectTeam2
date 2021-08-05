@@ -1,6 +1,7 @@
 package com.citiustech.request;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.EnumType;
@@ -55,6 +56,8 @@ public class SignUpRequest {
 	@NonNull
 	private String confirmPassword;
 	
-    private Set<String> role;
+    //private HashSet<String> role;
+	
+	private String role;
 
 }

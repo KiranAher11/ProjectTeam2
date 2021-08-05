@@ -15,13 +15,13 @@ public class RolesUtils {
 	@Autowired
 	private RoleRepository repository;
 	
-	public void mapRoles(Set<String> userRoles, Set<Role> dbRoles) {
-		if(userRoles == null || userRoles.isEmpty()) {
+	public void mapRoles(String usrRoles, Set<Role> dbRoles) {
+		if(usrRoles == null || usrRoles.isEmpty()) {
 			Role userRole = repository.findByName(ERole.ROLE_USER).orElseThrow(()->new RuntimeException("Error : Role is not found"));
 			dbRoles.add(userRole);		
 			}else {
-				userRoles.forEach(role->{
-					switch(role) {
+				
+					switch(usrRoles) {
 					case "admin":
 						Role adminRole = repository.findByName(ERole.ROLE_ADMIN).orElseThrow(()->new RuntimeException("Error: Role is not found"));
 						dbRoles.add(adminRole);
@@ -32,7 +32,7 @@ public class RolesUtils {
 							dbRoles.add(userRole);
 							break;
 						}
-				});
+				
 				
 			}
 	}

@@ -6,4 +6,5 @@ import com.kiranaher.model.User;
 
 public interface UserRepositoy extends JpaRepository<User, Integer> {
 
+
 }

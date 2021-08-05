@@ -88,6 +88,8 @@ public class AuthenticationRestController {
 	@PostMapping("/register")
 	public ResponseEntity<?> createUser(@Valid @RequestBody SignUpRequest signupRequest){
 		
+		System.out.println(signupRequest.getFirstName());
+		System.out.println(signupRequest.getLastName());
 		//check username exist
 		if(userRepository.existsByEmail(signupRequest.getEmail())) {
 			return ResponseEntity
@@ -104,7 +106,7 @@ public class AuthenticationRestController {
 		
 		//roles given by UI
 		
-		Set<String> usrRoles = signupRequest.getRole();
+		String usrRoles = signupRequest.getRole();
 		
 		//roles need to stored in DB
 		Set<Role> dbRoles = new HashSet<>();

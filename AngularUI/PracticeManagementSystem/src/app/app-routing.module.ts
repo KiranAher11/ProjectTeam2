@@ -6,6 +6,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 
 const routes: Routes = [
+
+  
   {
     path : '',
     component : AppComponent,
@@ -17,10 +19,9 @@ const routes: Routes = [
     ]
   },
    { path: 'user-registration', component: UserRegistrationComponent },
+
    { path: 'home', component: NavigationComponent },
    { path: 'login', loadChildren: () => import(`./patient/patient.module`).then(m => m.PatientModule)},
-
-
 
 ];
 

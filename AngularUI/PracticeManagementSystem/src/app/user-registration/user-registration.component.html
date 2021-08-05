@@ -1,93 +1,81 @@
-
-  <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center"> 
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center"> 
   <mat-card class="box">
     <mat-card-header>
       <mat-card-title>Registration</mat-card-title>
     </mat-card-header>
+ 
+    <form class="example-form" #userPost = "ngForm" (ngSubmit)="onSubmit(userPost.value)">
 
-    <form class="example-form">
+      
     
             <div class="example-container">
+              
               <mat-form-field  class="width-50">
                 <mat-label>First Name</mat-label>
-                <input matInput>
-              </mat-form-field>
-          
-              <mat-form-field  class="width-50 ml-2">
-                <mat-label>Lastname</mat-label>
-                <input matInput>
-              </mat-form-field>
-              <br>
-
-              <mat-form-field  class="width-50">
-                <mat-label>Email address</mat-label>
-                <input matInput placeholder="Ex. pat@example.com">
+                <input matInput name ="firstName" ngModel>
               </mat-form-field>
               
-
+              <mat-form-field  class="width-50 ml-2">
+                <mat-label>Lastname</mat-label>
+                <input matInput name ="lastName" ngModel>
+              </mat-form-field>
+              <br>
+ 
+              <mat-form-field  class="width-50">
+                <mat-label>Email address</mat-label>
+                <input matInput placeholder="Ex. pat@example.com" name ="email" ngModel>
+              </mat-form-field>
+              
+ 
               <mat-form-field  class="width-50 ml-2">
                 <mat-label>Contact Number</mat-label>
-                <input matInput>
+                <input matInput name ="contactNumber" ngModel>
               </mat-form-field>
               <br>
               <label id="example-radio-group-label">Gender: </label>
               <br><br>
-              <mat-radio-group aria-label="Select an option">
-                <mat-radio-button value="1">Male</mat-radio-button>
-                <mat-radio-button class="example-radio-button" value="2">Female</mat-radio-button>
-                <mat-radio-button class="example-radio-button" value="3">Other</mat-radio-button>
+              <mat-radio-group aria-label="Select an option" name ="gender" ngModel>
+                <mat-radio-button value="MALE">Male</mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="FEMALE">Female</mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="OTHER">Other</mat-radio-button>
               </mat-radio-group>
               <br><br>
-              <label id="example-radio-group-label">Date of birth: </label>
-              <br>
-              <mat-form-field class="width-25">
-                <mat-label>Day</mat-label>
-                <mat-select>
-                  <mat-option [value]="6">
-                  26
-                  </mat-option>
-                </mat-select>
+ 
+              <mat-form-field appearance="fill">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" name ="dateOfBirth" ngModel>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
-          
-              <mat-form-field  class="width-25 ml-1">
-                <mat-label>Month</mat-label>
-                <mat-select>
-                  <mat-option [value]="6">
-                  26
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-          
-              <mat-form-field  class="width-25 ml-1">
-                <mat-label>Year</mat-label>
-                <mat-select>
-                  <mat-option [value]="6">
-                  26
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-
-              <mat-form-field class="width-100">
+ 
+             <mat-form-field class="width-100">
                 <mat-label>Enter password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'">
+                <input matInput [type]="hide ? 'password' : 'text'" name ="password" ngModel>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
               </mat-form-field>
               <br>
-
+ 
               <mat-form-field class="width-100">
                 <mat-label>Enter Confirm password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'">
+                <input matInput [type]="hide ? 'password' : 'text'" name ="confirmPassword" ngModel>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
               </mat-form-field>
               <br>
 
+              <mat-form-field appearance="fill">
+                <mat-label>Role</mat-label>
+                <mat-select [(value)]="role" name ="role" ngModel>
+                  <mat-option value = "user">Patient</mat-option>
+                </mat-select>
+              </mat-form-field>
+ 
             </div>
-      <button mat-stroked-button color="accent" class="btn-block">Register</button>
-
+      <button type="submit" mat-raised-button color="primary" class="btn-block">Register</button>
+ 
     </form>
   </mat-card>
 </div>

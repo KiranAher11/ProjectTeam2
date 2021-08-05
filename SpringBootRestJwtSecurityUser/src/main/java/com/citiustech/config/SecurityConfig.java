@@ -21,6 +21,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.citiustech.filter.SecurityFilter;
 import com.citiustech.service.UserDetailsServiceImpl;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 @EnableWebSecurity
@@ -78,7 +79,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		return source;
 	}
 	
-	
+	/*
+	 * @Bean public ObjectMapper serializingObjectMapper() { ObjectMapper
+	 * objectMapper = new ObjectMapper(); objectMapper.findAndRegisterModules();
+	 * return objectMapper; }
+	 */
 	
 
 }

@@ -15,7 +15,7 @@ constructor(private http: HttpClient){
 }
   login(email:any,password:any){
 
-    return this.http.get(environment.hosturl + '/api/v1/login',{
+    return this.http.get(environment.hosturl + '/api/auth/login',{
         headers:{authorization:this.createBasicAuthToken(email,password)}}).pipe(map((res:any)=>{
             this.email= email;
             this.password = password;

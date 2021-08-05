@@ -18,18 +18,31 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
 
+	/*
+	 * @Id
+	 * 
+	 * @GeneratedValue(strategy = GenerationType.AUTO) private int userId; private
+	 * String title; private String firstName; private String lastName; private
+	 * String userEmail; private String role; private String dateOfBirth;
+	 * 
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "credential_id" , referencedColumnName = "credential_id")
+	 * private Credential credential;
+	 */
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int userId;
-	private String title;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 	private String firstName;
-	private String lastName;
-	private String userEmail;
-	private String role;
-	private String dateOfBirth;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "credential_id" , referencedColumnName = "credential_id")
-    private Credential credential;
+    private String lastName;
+    private String email;
+    private String contactNumber;
+    private int day;
+    private int month;
+    private int year;
+    private String password;
+    private String confirmPassword;
 	
 	
 	

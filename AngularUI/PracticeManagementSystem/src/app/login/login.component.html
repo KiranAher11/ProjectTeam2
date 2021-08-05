@@ -4,17 +4,17 @@
         <!-- <div class="header">
             <h1>CT GENERAL HOSPITAL</h1>
         </div>  -->
-       <div id = "formContent">
+       <!--<div id = "formContent">
             <div class = "alert alert-warning" *ngif = 'invalidLogin'{{errorMessage}}></div>
             <div class = "alert alert-success" *ngif = 'invalidLogin'{{successMessage}}></div>
-        </div>
+        </div>-->
         <div class="header">
             <picture>
                 <source media='(min-width:0px)' >
                 <img mat-card-image src="assets/images/ct_logo.PNG" alt="Photo of a Shiba Inu">
             </picture>
         </div>
-        <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+        <form (ngSubmit)="doLogin(userLogin.value)" #userLogin = "ngForm" name="loginForm" [formGroup]="loginForm">
             
             <div class="emailInput">
                 <mat-form-field class="full-width" appearance="outline">
@@ -41,9 +41,12 @@
                 </mat-error>
             </mat-form-field>
         </div>
+
         <a routerLink="/home">
-            <button mat-raised-button color="primary" class="login-btn">Login</button>
+            <button type="submit" mat-raised-button color="primary" class="login-btn">Login</button>
         </a>
+
+        
 
         <div class = "button-row" style="text-align:center">
             
@@ -60,8 +63,6 @@
       </div>
       
         </form>
-
-       
     </mat-card-content>
 </mat-card>
  
