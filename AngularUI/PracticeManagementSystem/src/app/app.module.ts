@@ -26,6 +26,8 @@ import { MatMenu, MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatStepperModule} from '@angular/material/stepper';
+
 
 
 
@@ -36,7 +38,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     LoginComponent,
     UserRegistrationComponent,
     NavigationComponent,
-    DashboardComponent
+    DashboardComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatListModule,
     LayoutModule,
     MatNativeDateModule,
-    MatDatepickerModule 
+    MatDatepickerModule ,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

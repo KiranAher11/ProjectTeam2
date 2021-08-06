@@ -30,7 +30,7 @@ import com.citiustech.response.MessageResponse;
 import com.citiustech.util.JwtUtils;
 import com.citiustech.util.RolesUtils;
 
-//@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationRestController {
