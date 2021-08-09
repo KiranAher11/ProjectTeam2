@@ -27,7 +27,7 @@ import lombok.NonNull;
 
 @Data
 @Entity
-@Table(name = "users_tab", uniqueConstraints = {
+@Table(name = "users", uniqueConstraints = {
                 @UniqueConstraint(columnNames = "email") })
 public class User {
 	

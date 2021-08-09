@@ -1,8 +1,12 @@
 package com.citiustech.model;
 
 public enum ERole {
-	ROLE_USER, 
-	ROLE_ADMIN,
+	
+    ROLE_ADMIN,
+    ROLE_PHYSICIAN,
+    ROLE_NURSE,
+    ROLE_PATIENT,
+
 	
 
 }

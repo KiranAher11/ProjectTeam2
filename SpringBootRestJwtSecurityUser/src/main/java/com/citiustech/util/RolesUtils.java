@@ -17,7 +17,7 @@ public class RolesUtils {
 	
 	public void mapRoles(String usrRoles, Set<Role> dbRoles) {
 		if(usrRoles == null || usrRoles.isEmpty()) {
-			Role userRole = repository.findByName(ERole.ROLE_USER).orElseThrow(()->new RuntimeException("Error : Role is not found"));
+			Role userRole = repository.findByName(ERole.ROLE_PATIENT).orElseThrow(()->new RuntimeException("Error : Role is not found"));
 			dbRoles.add(userRole);		
 			}else {
 				
@@ -28,7 +28,7 @@ public class RolesUtils {
 						break;
 						
 						default:
-							Role userRole = repository.findByName(ERole.ROLE_USER).orElseThrow(()->new RuntimeException("Error: Role is not found"));
+							Role userRole = repository.findByName(ERole.ROLE_PATIENT).orElseThrow(()->new RuntimeException("Error: Role is not found"));
 							dbRoles.add(userRole);
 							break;
 						}
