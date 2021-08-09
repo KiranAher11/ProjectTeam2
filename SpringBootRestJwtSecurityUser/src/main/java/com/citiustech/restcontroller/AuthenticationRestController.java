@@ -101,8 +101,12 @@ public class AuthenticationRestController {
 		//create user
 		User user = new User(
 				signupRequest.getEmail(),
-				encoder.encode(signupRequest.getPassword())
-				);
+				encoder.encode(signupRequest.getPassword()),
+				signupRequest.getFirstName(),
+				signupRequest.getLastName(),
+				signupRequest.getContactNumber() ,
+				signupRequest.getGender(),
+				signupRequest.getDateOfBirth());
 		
 		//roles given by UI
 		

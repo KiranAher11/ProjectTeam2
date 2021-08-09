@@ -17,6 +17,7 @@ export class PatientDetailsComponent implements OnInit{
   ngOnInit() {}
 
     firstFormGroup:FormGroup = this.fb.group({
+
       // firstCtrl: ['', Validators.required]
     });
     secondFormGroup:FormGroup = this.fb.group({
@@ -27,6 +28,11 @@ export class PatientDetailsComponent implements OnInit{
     fourthFormGroup:FormGroup = this.fb.group({
 
     });
+
+    doPatient(data:any){
+      console.log(data);
+
+    }
   }
   
  

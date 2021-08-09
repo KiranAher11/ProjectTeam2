@@ -27,10 +27,6 @@ import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatStepperModule} from '@angular/material/stepper';
-
-
-
-
  
 @NgModule({
   declarations: [
@@ -39,7 +35,6 @@ import {MatStepperModule} from '@angular/material/stepper';
     UserRegistrationComponent,
     NavigationComponent,
     DashboardComponent,
-  
   ],
   imports: [
     BrowserModule,
@@ -65,6 +60,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatNativeDateModule,
     MatDatepickerModule ,
     MatStepperModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
