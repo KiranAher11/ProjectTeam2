@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -11,14 +13,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PatientDetailsComponent implements OnInit{
   
+ 
   
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,private http: HttpClient) {}
   
   ngOnInit() {}
 
     firstFormGroup:FormGroup = this.fb.group({
 
       // firstCtrl: ['', Validators.required]
+      title : new FormControl(''),
+  firstName : new FormControl(''),
+  lastName : new FormControl(''),
+  dateOfBirth : new FormControl(''),
+  age : new FormControl(''),
+  gender : new FormControl(''),
+  race : new FormControl(''),
+  ethnicity : new FormControl(''),
+  languagesKnown : new FormControl(''),
+  email : new FormControl(''),
+  contactNumber : new FormControl('')
     });
     secondFormGroup:FormGroup = this.fb.group({
     });
@@ -31,10 +45,9 @@ export class PatientDetailsComponent implements OnInit{
 
     doPatient(data:any){
       console.log(data);
+      return this.http.post("http://localhost:9900/api/auth/patient",data,{responseType: 'text' as 'json'}).subscribe((result)=>{
+      console.log("Result",result);
+}) 
 
-    }
-  }
-  
- 
-  
-
+   }
+}

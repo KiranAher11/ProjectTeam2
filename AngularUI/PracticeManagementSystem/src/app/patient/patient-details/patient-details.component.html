@@ -1,11 +1,11 @@
 <mat-horizontal-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup">
-    <form (ngSubmit)="doPatient(patientSubmit.value)" #patientSubmit = "ngForm" name="firstFormGroup" [formGroup]="firstFormGroup">
+    <form (ngSubmit)="doPatient(patientDetails.value)" #patientDetails = "ngForm" name="firstFormGroup" [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Patient Details</ng-template>
       
         <mat-form-field>
         <mat-label>Title</mat-label>
-        <select id = "title1"  formControlName="title1" matNativeControl id="mySelectId">
+        <select id = "title1"  formControlName="title" matNativeControl id="mySelectId">
           <option value="" disabled selected></option>
           <option value="Mr">Mr</option>
           <option value="Ms">Ms</option>
@@ -15,7 +15,7 @@
       </mat-form-field><br>
       <mat-form-field>
         <mat-label>First Name</mat-label>
-        <input id = "firstName1" formControlName="firstName1" matInput placeholder="First name" required>
+        <input id = "firstName1" formControlName="firstName" matInput placeholder="First name" required>
       </mat-form-field>&nbsp;&nbsp;
       <mat-form-field>
         <mat-label>Last Name</mat-label>
@@ -70,28 +70,28 @@
       <ng-template matStepLabel>Address</ng-template>
       <mat-form-field>
         <mat-label>Address</mat-label>
-        <input formControlName="address" matInput >
+        <input matInput >
         
       </mat-form-field><br>
       <mat-form-field>
         <mat-label>City</mat-label>
-        <input formControlName="city" matInput placeholder="Ex. San Francisco">
+        <input  matInput placeholder="Ex. San Francisco">
         
       </mat-form-field>&nbsp;&nbsp;
       <mat-form-field>
         <mat-label>State</mat-label>
-        <input formControlName="state" matInput placeholder="Ex. California">
+        <input  matInput placeholder="Ex. California">
         
       </mat-form-field><br>
       <mat-form-field>
         <mat-label>Country</mat-label>
-        <input formControlName="country" matInput placeholder="Ex. America">
+        <input  matInput placeholder="Ex. America">
 
         
       </mat-form-field>&nbsp;&nbsp;
       <mat-form-field>
         <mat-label>Postal Code</mat-label>
-        <input formControlName="postalCode" matInput #postalCode maxlength="5" placeholder="Ex. 941054">
+        <input  matInput #postalCode maxlength="5" placeholder="Ex. 941054">
         <mat-hint>{{postalCode.value.length}} / 6</mat-hint>
       </mat-form-field>
         
@@ -108,7 +108,7 @@
       <ng-template matStepLabel>Next Of Kin</ng-template>
         <mat-form-field>
           <mat-label>Title</mat-label>
-          <select formControlName="title" matNativeControl id="mySelectId">
+          <select   matNativeControl id="mySelectId">
             <option value="" disabled selected></option>
             <option value="Mr">Mr</option>
             <option value="Ms">Ms</option>
@@ -118,15 +118,15 @@
         </mat-form-field><br>
         <mat-form-field>
           <mat-label>First Name</mat-label>
-          <input formControlName="firstName" matInput placeholder="First name" required>
+          <input  matInput placeholder="First name" required>
         </mat-form-field>&nbsp;&nbsp;
         <mat-form-field>
           <mat-label>Last Name</mat-label>
-          <input formControlName="lastName" matInput placeholder="Last name" required>
+          <input  matInput placeholder="Last name" required>
         </mat-form-field><br>
         <mat-form-field>
           <mat-label>Relationship</mat-label>
-          <select formControlName="relationship" matNativeControl id="mySelectId">
+          <select  matNativeControl id="mySelectId">
             <option value="" disabled selected></option>
             <option value="Father">Father</option>
             <option value="Mother">Mother</option>
@@ -138,11 +138,11 @@
 
         <mat-form-field>
           <mat-label>Email</mat-label>
-          <input formControlName="email" matInput placeholder="Ex. pat@example.com" required>
+          <input  matInput placeholder="Ex. pat@example.com" required>
         </mat-form-field>&nbsp;&nbsp;
         <mat-form-field>
           <mat-label>Contact Number</mat-label>
-          <input formControlName="contactNumber" matInput required>
+          <input   matInput required>
       
       </mat-form-field>
     
@@ -158,18 +158,18 @@
     <form [formGroup]="fourthFormGroup">
       <ng-template matStepLabel>Allergy Details</ng-template>
       <mat-label>Patient has any Known allergies</mat-label>
-      <mat-radio-group formControlName="anyAllergies" aria-label="Select an option"><br>
+      <mat-radio-group  aria-label="Select an option"><br>
         <mat-radio-button value=1>Yes</mat-radio-button>
         <mat-radio-button value =2>No</mat-radio-button>
        
       </mat-radio-group><br>
         <mat-form-field>
           <mat-label>Allergy Id</mat-label>
-          <input formControlName="allergyId" matInput>
+          <input  matInput>
         </mat-form-field><br>
         <mat-form-field>
           <mat-label>Allergy Type</mat-label>
-          <input formControlName="allergyType" matInput>
+          <input  matInput>
         </mat-form-field>
         
          
