@@ -47,4 +47,12 @@ public class EmailController {
 			return "Please enter the registered email address";
 		}
 	}
+	
+	@PostMapping("changePassword/{email,newPassword}")
+	public String changePassword(@PathVariable String email , @PathVariable String newPassword) {
+		
+		Optional<User> user = userRepository.findByEmail(email);
+		user.ifPresent(e -> e.setPassword(encoder.encode(newPassword)));
+		return "Password changed successfully";
+	}
 }
