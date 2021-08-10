@@ -85,7 +85,4 @@ public class User {
 		
 	}
 	
-    //private HashSet<String> role;
-
-
 }

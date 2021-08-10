@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,6 +41,8 @@ public class EmailController {
 		
 		Optional<User> user = userRepository.findByEmail(email);
 		user.ifPresent(e -> e.setPassword(encoder.encode("password@123")));
+		User user2 = user.get();
+		userRepository.save(user2);
 		return "Email sent successfully";
 		}		
 		else {
@@ -48,11 +51,13 @@ public class EmailController {
 		}
 	}
 	
-	@PostMapping("changePassword/{email,newPassword}")
-	public String changePassword(@PathVariable String email , @PathVariable String newPassword) {
+	@PostMapping("/changePassword")
+	public String changePassword(@RequestBody ValidateUser user1) {
 		
-		Optional<User> user = userRepository.findByEmail(email);
-		user.ifPresent(e -> e.setPassword(encoder.encode(newPassword)));
+		Optional<User> user = userRepository.findByEmail(user1.getEmail());
+		user.ifPresent(e -> e.setPassword(encoder.encode(user1.getPassword())));
+		User user2 = user.get();
+		userRepository.save(user2);
 		return "Password changed successfully";
 	}
 }
