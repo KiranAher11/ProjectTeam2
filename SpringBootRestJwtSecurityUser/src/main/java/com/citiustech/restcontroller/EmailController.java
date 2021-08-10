@@ -34,7 +34,7 @@ public class EmailController {
 				
 		if(flag) {
 		String message = "Your new password is : password@123";
-		String subject = "Mail from CT Genaeral Hospital";
+		String subject = "Mail from CT General Hospital";
 		service.sendSimpleEmail(email , message, subject);
 		
 		Optional<User> user = userRepository.findByEmail(email);
