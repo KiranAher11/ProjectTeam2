@@ -14,8 +14,6 @@ import com.citiustech.model.User;
 import com.citiustech.repo.UserRepository;
 import com.citiustech.service.EmailSenderService;
 
-
-
 @RestController
 @RequestMapping("/mail")
 public class EmailController {
@@ -41,9 +39,11 @@ public class EmailController {
 		
 		Optional<User> user = userRepository.findByEmail(email);
 		user.ifPresent(e -> e.setPassword(encoder.encode("password@123")));
-		User user2 = user.get();
-		userRepository.save(user2);
-		return "Email sent successfully";
+			if(user.isPresent()) {
+				userRepository.save(user.get());
+			}
+		
+			return "Email sent successfully";
 		}		
 		else {
 			
@@ -56,8 +56,9 @@ public class EmailController {
 		
 		Optional<User> user = userRepository.findByEmail(user1.getEmail());
 		user.ifPresent(e -> e.setPassword(encoder.encode(user1.getPassword())));
-		User user2 = user.get();
-		userRepository.save(user2);
+			if(user.isPresent()) {
+				userRepository.save(user.get());
+			}
 		return "Password changed successfully";
 	}
 }
