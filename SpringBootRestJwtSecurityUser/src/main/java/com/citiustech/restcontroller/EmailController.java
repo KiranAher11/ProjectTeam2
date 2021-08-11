@@ -29,18 +29,17 @@ public class EmailController {
 	@PostMapping("/sendEmail")
 	public String sendPasswordToUser(@RequestBody ValidateEmail email) {
 		
-		Optional<User> flag = userRepository.findByEmail(email.getEmail());
-		System.out.println("user is present");		
-		if(flag.isPresent()) {
-		String message = "Your new password is : password@123";
-		String subject = "Mail from CT General Hospital";
-		service.sendSimpleEmail(email.getEmail() , message, subject);
-		
 		Optional<User> user = userRepository.findByEmail(email.getEmail());
-		user.ifPresent(e -> e.setPassword(encoder.encode("password@123")));
-			if(user.isPresent()) {
-				userRepository.save(user.get());
-			}
+		System.out.println("user is present");
+		
+		if(user.isPresent()) {
+			String message = "Your new password is : password@123";
+			String subject = "Mail from CT General Hospital";
+			service.sendSimpleEmail(email.getEmail() , message, subject);
+		
+			user.ifPresent(e -> e.setPassword(encoder.encode("password@123")));
+	
+			userRepository.save(user.get());
 		
 			return "Email sent successfully";
 		}		
