@@ -33,9 +33,9 @@ export class ForgotPasswordComponent implements OnInit {
   forgotPasswordSend(){
     let fp:forgotPassword = new forgotPassword(); 
     Object.assign(fp, this.forgotPasswordForm.value);
-    console.log(fp);
-    return this.http.post("http://localhost:9900/mail/send",fp).subscribe( data => {
-      if (data != null) {
+    return this.http.post("http://localhost:9900/api/mail/sendEmail",fp).subscribe( data => {
+
+    if (data != null) {
         alert('Email is sent to reset the password.');
         this.router.navigateByUrl('/home');
       }
