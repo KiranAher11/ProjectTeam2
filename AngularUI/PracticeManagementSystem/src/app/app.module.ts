@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
+import { MatCardHeader, MatCardModule, MatCardTitle } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +27,8 @@ import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatStepperModule} from '@angular/material/stepper';
+import { forgotPassword } from './forgot-password/forgotPassword';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
  
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     UserRegistrationComponent,
     NavigationComponent,
     DashboardComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
