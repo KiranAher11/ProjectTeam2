@@ -60,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.authorizeRequests()
 		
 		.antMatchers("/auth/**").permitAll()
+		.antMatchers("/mail/**").permitAll()
         .antMatchers("/admin").hasAnyAuthority("ROLE_PATIENT","ROLE_ADMIN","ROLE_PHYSICIAN","ROLE_NURSE")
         .antMatchers("/patient").hasAuthority("ROLE_USER")
         .antMatchers("/nurse").hasAuthority("ROLE_NURSE")

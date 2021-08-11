@@ -39,10 +39,7 @@ public class Patient {
     private String patientEmail;
     private String contactNumber;
     private String dateOfBirth;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "credential_id" , referencedColumnName = "credential_id")
-    private Credential credential;
+       
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
     private Set<PatientAllergy> patientAllergies;
