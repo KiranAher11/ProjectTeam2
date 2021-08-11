@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,21 +26,20 @@ public class EmailController {
 	@Autowired
 	private PasswordEncoder encoder;
 	
-	@PostMapping("/send/{email}")
-	public String sendPasswordToUser(@PathVariable String email) {
+	@PostMapping("/sendEmail")
+	public String sendPasswordToUser(@RequestBody ValidateEmail email) {
 		
-		boolean flag = userRepository.existsByEmail(email);
-				
-		if(flag) {
-		String message = "Your new password is : password@123";
-		String subject = "Mail from CT General Hospital";
-		service.sendSimpleEmail(email , message, subject);
+		Optional<User> user = userRepository.findByEmail(email.getEmail());
+		System.out.println("user is present");
 		
-		Optional<User> user = userRepository.findByEmail(email);
-		user.ifPresent(e -> e.setPassword(encoder.encode("password@123")));
-			if(user.isPresent()) {
-				userRepository.save(user.get());
-			}
+		if(user.isPresent()) {
+			String message = "Your new password is : password@123";
+			String subject = "Mail from CT General Hospital";
+			service.sendSimpleEmail(email.getEmail() , message, subject);
+		
+			user.ifPresent(e -> e.setPassword(encoder.encode("password@123")));
+	
+			userRepository.save(user.get());
 		
 			return "Email sent successfully";
 		}		
