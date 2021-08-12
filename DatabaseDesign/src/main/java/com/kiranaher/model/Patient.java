@@ -39,7 +39,6 @@ public class Patient {
     private String patientEmail;
     private String contactNumber;
     private String dateOfBirth;
-       
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
     private Set<PatientAllergy> patientAllergies;
@@ -61,4 +60,7 @@ public class Patient {
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
     private Set<InboxPatient> inboxPatients;
+    
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "patient")
+    private Set<PatientDetails> patientDetails;
 }

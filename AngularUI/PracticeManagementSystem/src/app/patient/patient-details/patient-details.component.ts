@@ -12,39 +12,65 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./patient-details.component.scss']
 })
 export class PatientDetailsComponent implements OnInit{
-  
+  step:any = 1;
  
   
   constructor(private fb: FormBuilder,private http: HttpClient) {}
+
+  multistep = new FormGroup({
+    patientDetails : new FormGroup({
+      title : new FormControl(''),
+      firstName : new FormControl(''),
+      lastName : new FormControl(''),
+      dateOfBirth : new FormControl(''),
+      age : new FormControl(''),
+      gender : new FormControl(''),
+      race : new FormControl(''),
+      ethnicity : new FormControl(''),
+      languagesKnown : new FormControl(''),
+      email : new FormControl(''),
+      contactNumber : new FormControl('')
+     }),
+     address: new FormGroup({
+      address : new FormControl(''),
+      city : new FormControl(''),
+      state : new FormControl(''),
+      country : new FormControl(''),
+      postalCode : new FormControl('')
+     }),
+     kin : new FormGroup({
+      firstName : new FormControl(''),
+      lastName : new FormControl(''),
+      relationship : new FormControl(''),
+      email : new FormControl(''),
+      contactNumber : new FormControl('')
+     }),
+     patientAllergy : new FormGroup({
+      allergyRadio : new FormControl(''),
+      allergyId : new FormControl(''),
+      allergyType : new FormControl('')
+     })
+  })
+
+  firstFormGroup:FormGroup = this.fb.group({
+
+    // firstCtrl: ['', Validators.required]
+
+  });
+  secondFormGroup:FormGroup = this.fb.group({
+    
+  });
+  thirdFormGroup:FormGroup = this.fb.group({
+    
+  });
+  fourthFormGroup:FormGroup = this.fb.group({
+
+  });
   
   ngOnInit() {}
 
-    firstFormGroup:FormGroup = this.fb.group({
-
-      // firstCtrl: ['', Validators.required]
-      title : new FormControl(''),
-  firstName : new FormControl(''),
-  lastName : new FormControl(''),
-  dateOfBirth : new FormControl(''),
-  age : new FormControl(''),
-  gender : new FormControl(''),
-  race : new FormControl(''),
-  ethnicity : new FormControl(''),
-  languagesKnown : new FormControl(''),
-  email : new FormControl(''),
-  contactNumber : new FormControl('')
-    });
-    secondFormGroup:FormGroup = this.fb.group({
-    });
-    thirdFormGroup:FormGroup = this.fb.group({
-      
-    });
-    fourthFormGroup:FormGroup = this.fb.group({
-
-    });
-
     doPatient(data:any){
-      console.log(data);
+    console.log(data);
       return this.http.post("http://localhost:9900/api/auth/patient",data,{responseType: 'text' as 'json'}).subscribe((result)=>{
       console.log("Result",result);
 }) 

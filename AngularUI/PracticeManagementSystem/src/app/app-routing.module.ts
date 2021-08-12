@@ -23,7 +23,6 @@ const routes: Routes = [
    { path: 'home', component: NavigationComponent },
    { path: 'patient', loadChildren: () => import(`./patient/patient.module`).then(m => m.PatientModule)},
    { path: 'forgot-password', component: ForgotPasswordComponent }
-
 ];
 
 @NgModule({

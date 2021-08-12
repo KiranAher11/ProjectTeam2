@@ -1,27 +1,39 @@
-package com.kiranaher.model;
+package com.citiustech.model;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@Entity
-@Table(name="patient_allergy")
-@NoArgsConstructor
+//@Entity
+//@Table(name="patient_allergy")
+@Component
 public class PatientAllergy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int allergyId;
+	private int patientAllergyId;
+	
 	@Column(name="allergy_id")
 	private String allergy_id;
+	
 	@Column(name="allergy_type")
 	private String type;
+	
+	
+	public PatientAllergy() {
+		
+	}
+	
+	public PatientAllergy(String allergy_id, String type) {
+		super();
+		this.allergy_id = allergy_id;
+		this.type = type;
+	}
+	
 	
 }

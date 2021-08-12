@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder,Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
 import {AuthService} from '../services/AuthService';
 import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   invalidLogin = false;
   loginSuccess = false;
   hide: boolean=false;
-  constructor(private fb:FormBuilder,private authService:AuthService,private http: HttpClient) {
+  constructor(private fb:FormBuilder,private authService:AuthService,private http: HttpClient, private router: Router) {
 
    }
 
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
       doLogin(data:any){
          console.log(data);
          return this.http.post("http://localhost:9900/api/auth/login",data,{responseType: 'text' as 'json'}).subscribe((result)=>{
+           this.router.navigate(['/home']);
          console.log("Result",result);
   }) 
 

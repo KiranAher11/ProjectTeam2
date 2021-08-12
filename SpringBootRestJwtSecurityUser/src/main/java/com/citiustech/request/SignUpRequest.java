@@ -1,14 +1,8 @@
 package com.citiustech.request;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
