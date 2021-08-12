@@ -60,9 +60,8 @@ public class AuthenticationRestController {
 		
 		boolean isPasswordMatches = encoder.matches(loginRequest.getPassword(), user.get().getPassword());
 		
-		System.out.println(user.get());
-		
-		System.out.println(isPasswordMatches);
+		//System.out.println(user.get());
+		//System.out.println(isPasswordMatches);
 		
 		if(user.isPresent() && isPasswordMatches) {
 			Authentication authentication = authenticationManager.authenticate(
