@@ -29,6 +29,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatStepperModule} from '@angular/material/stepper';
 import { forgotPassword } from './forgot-password/forgotPassword';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
  
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     UserRegistrationComponent,
     NavigationComponent,
     DashboardComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +66,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     LayoutModule,
     MatNativeDateModule,
     MatDatepickerModule ,
-    MatStepperModule
-
+    MatStepperModule,
+    MatCheckboxModule
+    // MatSnackBar
   ],
   providers: [],
   bootstrap: [AppComponent]
