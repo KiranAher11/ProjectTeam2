@@ -55,13 +55,13 @@ public class AuthenticationRestController {
 	//login
 	@PostMapping("/login")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest){
+		
 		//check for Authentication
 		Optional<User> user= userRepository.findByEmail(loginRequest.getEmail());
-		
 		boolean isPasswordMatches = encoder.matches(loginRequest.getPassword(), user.get().getPassword());
-		
-		//System.out.println(user.get());
-		//System.out.println(isPasswordMatches);
+	 
+		System.out.println(user.get());
+		System.out.println(isPasswordMatches);
 		
 		if(user.isPresent() && isPasswordMatches) {
 			Authentication authentication = authenticationManager.authenticate(

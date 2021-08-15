@@ -32,6 +32,7 @@ public class EmailController {
 		Optional<User> user = userRepository.findByEmail(email.getEmail());
 		System.out.println("user is present");
 		
+		System.out.println();
 		if(user.isPresent()) {
 			String message = "Your new password is : password@123";
 			String subject = "Mail from CT General Hospital";
@@ -57,6 +58,7 @@ public class EmailController {
 			if(user.isPresent()) {
 				userRepository.save(user.get());
 			}
+			
 		return "Password changed successfully";
 	}
 }
