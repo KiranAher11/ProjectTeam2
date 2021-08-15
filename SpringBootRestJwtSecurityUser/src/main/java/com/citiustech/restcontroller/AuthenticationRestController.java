@@ -98,8 +98,7 @@ public class AuthenticationRestController {
 							/*userDetails.getAuthorities()
 							.stream()
 							.map(auth ->auth.getAuthority())
-							.collect(Collectors.toSet())*/ //Set<String>
-							
+							.collect(Collectors.toSet())*/ //Set<String> 
 							)
 					);
 		}
