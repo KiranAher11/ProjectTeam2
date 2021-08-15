@@ -99,6 +99,7 @@ public class AuthenticationRestController {
 							.stream()
 							.map(auth ->auth.getAuthority())
 							.collect(Collectors.toSet())*/ //Set<String> 
+							
 							)
 					);
 		}
