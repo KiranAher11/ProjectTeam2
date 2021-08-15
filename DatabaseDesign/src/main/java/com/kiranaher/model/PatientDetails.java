@@ -2,11 +2,17 @@ package com.kiranaher.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 
 import lombok.Data;
@@ -33,7 +39,28 @@ public class PatientDetails {
       private String email;
       private String language_known;
       private String contact_number;
-      private String home_address;
-     // private Kin kin;
+      
+      
+      
+      @OneToOne(cascade = CascadeType.ALL)
+      @JoinColumn(name = "addressId" , referencedColumnName = "addressId")
+      private PatientAddress home_address;
+      
+      @OneToOne(cascade = CascadeType.ALL)
+      @JoinColumn(name = "kinId;" , referencedColumnName = "kinId")
+      private Kin kin;
+      
+      @OneToOne(cascade = CascadeType.ALL)
+      @JoinColumn(name = "allergyId;" , referencedColumnName = "allergyId")
+      private PatientAllergy patientAllergy;
+      
+      @OneToOne(fetch = FetchType.EAGER)
+  	  @JoinColumn(name = "patientId")
+  	  private Patient patient;
+      
+     
+      
+    
+     
       	
 }

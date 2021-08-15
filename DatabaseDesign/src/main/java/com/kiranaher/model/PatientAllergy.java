@@ -1,13 +1,12 @@
 package com.kiranaher.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,16 +18,10 @@ import lombok.NoArgsConstructor;
 public class PatientAllergy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private int patient_visit_id;
-	private String allergy_name;
-	private String credated_by;
-	private String allergy_description;
-	
-	private String isActive;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "patientId")
-	private Patient patient;
+	private int allergyId;
+	@Column(name="allergy_id")
+	private String allergy_id;
+	@Column(name="allergy_type")
+	private String type;
 	
 }

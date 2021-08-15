@@ -22,13 +22,16 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.stereotype.Component;
+
 import lombok.Data;
 import lombok.NonNull;
 
 @Data
-@Entity
-@Table(name = "patientDetails", uniqueConstraints = {
-                @UniqueConstraint(columnNames = "email") })
+//@Entity
+//@Table(name = "patientDetails", uniqueConstraints = {
+            //    @UniqueConstraint(columnNames = "email") })
+@Component
 public class PatientDetails {
 	
 	@Id
@@ -85,7 +88,26 @@ public class PatientDetails {
 	public PatientDetails() {
 		
 	}
-	
-    //private HashSet<String> role;
 
+
+	public PatientDetails(@NotBlank @Size(max = 120) @NonNull String title, @NotNull @Size(max = 25) String firstName,
+			@Size(max = 25) String lastName, @Size(max = 15) String contactNumber,
+			@NotBlank @Size(max = 50) @Email @NonNull String email, int age,
+			@NotBlank @Size(max = 120) @NonNull String race, @NotBlank @Size(max = 120) @NonNull String ethnicity,
+			@NotBlank @Size(max = 120) @NonNull String languagesKnown, EGender gender, Date dateOfBirth) {
+		super();
+		this.title = title;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.contactNumber = contactNumber;
+		this.email = email;
+		this.age = age;
+		this.race = race;
+		this.ethnicity = ethnicity;
+		this.languagesKnown = languagesKnown;
+		this.gender = gender;
+		this.dateOfBirth = dateOfBirth;
+	}
+	
+    
 }

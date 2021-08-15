@@ -27,7 +27,8 @@ mat-card{
 }
 
 .forgot-password{
-    padding-left: 0px;
+    padding-left: 100px;
+    float: right;
 }
 
 .emailInput{
@@ -50,4 +51,13 @@ mat-card{
     width:50%;
     min-width: unset!important;
 
+}
+
+.register {
+    float: left;
+}
+
+::ng-deep .mat-checkbox-layout {
+    white-space: normal !important;
+    font-size: small;
 }

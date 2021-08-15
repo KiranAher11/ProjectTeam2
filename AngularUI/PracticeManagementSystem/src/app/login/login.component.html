@@ -26,43 +26,39 @@
                 </mat-form-field>
             </div>
             <div>
-            
-            <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Password</mat-label>
-                <input  type= "password" id = "password" formControlName="password"  matInput [type]="hide ? 'password' : 'text'" required/>
-                <button mat-icon-button matSuffix (click)="hide =!hide"
-                    [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
-                    <mat-icon>
-                        {{ hide ? 'visibility_off' : 'visibility'}}
-                    </mat-icon>
-                </button>
-                <mat-error *ngIf="!loginForm.controls['password'].valid">
-                    Password is required
-                </mat-error>
-            </mat-form-field>
-        </div>
-
-
-        <a routerLink="/home">
-            <button type="submit" mat-raised-button color="primary" class="login-btn">Login</button>
-        </a>
-        
-        <!-- <button type="submit" mat-raised-button color="primary" class="login-btn">Login</button> -->
-
-        <div class = "button-row" style="text-align:center">
-            
-            <!-- <a routerLink="/dashboard">Dashboard</a> -->
-            <tr>
-            
-            <a routerLink="user-registration"><p style="font-family: 'Times New Roman';font-weight: bolder;">New to CT General?
-                <span style="color:blue;font-weight: bolder;">Sign Up</span></p>
-            </a>
-            <a routerLink="forgot-password"><p style="font-family: 'Times New Roman';font-weight: bolder;">Forgot Password?
-            </a>
-        
-        </tr>
-      </div>
-      
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input  type= "password" id = "password" formControlName="password"  matInput [type]="hide ? 'password' : 'text'" required/>
+                    <button mat-icon-button matSuffix (click)="hide =!hide"
+                        [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                        <mat-icon>
+                            {{ hide ? 'visibility_off' : 'visibility'}}
+                        </mat-icon>
+                    </button>
+                    <mat-error *ngIf="!loginForm.controls['password'].valid">
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-checkbox id="isEmployee" color="primary"
+                    formControlName="isEmployee" (change) = "checkUser($event)">Are you Employee?
+                </mat-checkbox>
+            </div>
+            <div class = "button-row" >
+                <button type="submit" mat-raised-button color="primary" class="login-btn">Login</button>
+            </div>
+            <div class = "button-row" style="text-align:center">
+                <tr>
+                    <a routerLink="user-registration"><p class="register" style="font-family: 'Times New Roman';font-weight: bolder;">New to CT General?
+                        <span style="color:blue;font-weight: bolder;">Sign Up</span></p>
+                    </a>
+                    <a routerLink="forgot-password"><p class="forgot-password" style="font-family: 'Times New Roman';font-weight: bolder;">Forgot Password?
+                    </a>
+                    <!-- <a routerLink="change-password"><p style="font-family: 'Times New Roman';font-weight: bolder;">Change Password?
+                    </a> -->
+                    </tr>
+            </div>
         </form>
     </mat-card-content>
 </mat-card>

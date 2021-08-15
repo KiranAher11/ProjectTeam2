@@ -28,6 +28,5 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
     "strictNullChecks":false
-    
   }
 }
