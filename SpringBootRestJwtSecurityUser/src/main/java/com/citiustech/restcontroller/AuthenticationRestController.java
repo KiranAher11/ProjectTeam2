@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.validation.Valid;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.citiustech.model.ERole;
 import com.citiustech.model.Role;
 import com.citiustech.model.User;
 import com.citiustech.model.UserDetailsImpl;
@@ -79,16 +81,25 @@ public class AuthenticationRestController {
 			//current user object
 			UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 			
+			Optional <String> role = userDetails.getAuthorities()
+												.stream()
+												.map(auth ->auth.getAuthority())
+												.findFirst();
+			
 			//return response
 			return ResponseEntity.ok(
 					new JwtResponse(
 							jwt,//token 
+							"bearer",
 							userDetails.getId(),//id
 							userDetails.getEmail(),
-							userDetails.getAuthorities()
+							role.get().toString()
+							
+							/*userDetails.getAuthorities()
 							.stream()
 							.map(auth ->auth.getAuthority())
-							.collect(Collectors.toSet()) //Set<String>
+							.collect(Collectors.toSet())*/ //Set<String>
+							
 							)
 					);
 		}
@@ -137,5 +148,7 @@ public class AuthenticationRestController {
 				
 	}
 	
+	
+
 	
 }
