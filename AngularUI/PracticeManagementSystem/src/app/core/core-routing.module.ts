@@ -7,14 +7,14 @@ const routes: Routes = [
     path: '',
     component: SideNavComponent,
     children: [
-      // {
-      //   path: 'visit',
-      //   loadChildren: () => import('../visit/visit.module').then(v => v.VisitModule)
-      // },
-      // {
-      //   path: 'schedule',
-      //   loadChildren: () => import('../schedule/schedule.module').then(s => s.ScheduleModule)
-      // },
+      {
+        path: 'visit',
+        loadChildren: () => import('../visit/visit.module').then(v => v.VisitModule)
+      },
+      {
+        path: 'schedule',
+        loadChildren: () => import('../schedule/schedule.module').then(s => s.ScheduleModule)
+      },
       {
         path: 'admin',
         loadChildren: () => import('../admin/admin.module').then(a => a.AdminModule)
