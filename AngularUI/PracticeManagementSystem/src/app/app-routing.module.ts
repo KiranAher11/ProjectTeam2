@@ -22,7 +22,6 @@ const routes: Routes = [
   },
    { path: 'user-registration', component: UserRegistrationComponent },
    //{ path: 'home', component: NavigationComponent },
-   { path: 'patient', loadChildren: () => import(`./patient/patient.module`).then(m => m.PatientModule)},
    { path: 'forgot-password', component: ForgotPasswordComponent },
    { path: 'change-password', component: ChangePasswordComponent },
    {path: 'core', loadChildren: () => import('./core/core.module').then(c => c.CoreModule)}
