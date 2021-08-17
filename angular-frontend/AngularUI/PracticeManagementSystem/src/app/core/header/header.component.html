@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+
+    <button class="example-icon menu-icon" aria-label="Menu" mat-icon-button (click)="clickMenu()">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <span>
+        <h1 class="example-app-name">CT General Hospital</h1>
+    </span>
+    <span class="example-spacer"></span>
+    <!-- <button mat-menu-item class="example-icon notify-btn" aria-label="notifications">
+        <mat-icon>notifications</mat-icon>
+    </button> -->
+
+    <button [matMenuTriggerFor]="notification" matBadge="5" matBadgeOverlap="false" matBadgeColor="warn" id="navbarDropdownMenuLink" mat-menu-item class="example-icon notify-btn" aria-label="notifications"  >
+        <mat-icon>notifications</mat-icon>
+        
+    </button> 
+    <mat-menu #notification="matMenu" >
+        <button mat-menu-itemmatBadgeColor="warn">Appointment Schedule For Arvina james</button>
+        <!-- <button mat-menu-item>Appointment schedule for Snehal</button>
+        <button mat-menu-item>Appointment schedule for Kunal</button>
+        <button mat-menu-item>Appointment schedule for Rashi</button>
+        <button mat-menu-item>Appointment schedule for Shankar</button>    -->
+     </mat-menu>
+    <div *ngFor="let item of profileData" fxLayout="row" >
+    <div fxLayout="row" style="font-size: 15px;" >
+    {{item.firstName}} {{item.lastName}} 
+      <button [matMenuTriggerFor]="profile" mat-icon-button>
+        <mat-icon>account_circle</mat-icon>
+    </button>
+    </div>
+    </div>
+    <mat-menu #profile="matMenu">
+        <button mat-menu-item>
+            <mat-icon>account_box</mat-icon> Profile
+        </button>
+        <button mat-menu-item routerLink="login/changepassword">
+            <mat-icon>change_circle</mat-icon> Change Password
+        </button>
+        <button mat-menu-item routerLink="">
+            <mat-icon>exit_to_app</mat-icon> Sign Out
+        </button>
+    </mat-menu>
+</mat-toolbar>
