@@ -1,0 +1,85 @@
+
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<mat-card>
+   <h4>Schedule Appointment</h4>
+
+        <form class="example-form">
+            <mat-card-content>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Appointment Title</mat-label>
+                    <input matInput placeholder="Appointment Title" >
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Select Physician</mat-label>
+                    <mat-select>
+                        <mat-option></mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div fxLayout="row">
+                    <mat-form-field class="dob">
+                        <mat-label>Appointment Date</mat-label>
+                        <input matInput  placeholder="Choose a date">
+                        <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
+                        <mat-datepicker></mat-datepicker>
+                    </mat-form-field>
+
+                    <!-- <mat-form-field class="time" >
+                        <mat-label>Select time</mat-label>
+                        <input matInput>
+                      </mat-form-field>  -->
+                 <!-- <mat-form-field>
+                    <input matInput type="datetime-local" placeholder="start date" formControlName="startTime">
+                </mat-form-field> 
+                      
+
+                       <mat-form-field class="time">
+                        <mat-label>write time</mat-label>
+                        <input matInput [(ngModel)]="this.endtime" (click)="getEndTime()">
+                      </mat-form-field> -->
+ <!--Appointment Time Control-->
+ <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+    <mat-form-field class="time" >
+      <mat-label>Appointment Time</mat-label>
+      <mat-icon matSuffix>access_time</mat-icon>
+      <!-- <input #pickerInput type="text"> -->
+      <input matInput type="text"  aria-live="assertive">
+      <mat-error>
+        <span >
+          Please Select Appointment Time !
+        </span>
+      </mat-error>
+    </mat-form-field>
+  </div>
+<!--Appointment Time Control Ends -->
+
+                </div>
+                <!-- <mat-form-field>
+                    <input matInput type="datetime-local" placeholder="start date">
+                </mat-form-field> -->
+                <!-- <div class="ngx-timepicker-field-example"> 
+                    <ngx-timepicker-field formControlName="startTime" >
+
+                    </ngx-timepicker-field>
+                   </div>
+                <div class="ngx-timepicker-field-example"> 
+                  <ngx-timepicker-field formControlName="endTime" (click)="getEndTime()" >
+                  {{this.endtime}}
+                  </ngx-timepicker-field>
+                 </div> -->
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Meeting Description</mat-label>
+                        <textarea matInput></textarea>
+                    </mat-form-field>
+                
+                <br>
+
+            </mat-card-content>
+            <button mat-flat-button color="primary" class="btn-block">Submit</button>
+        </form>
+    </mat-card>
+
+</div>

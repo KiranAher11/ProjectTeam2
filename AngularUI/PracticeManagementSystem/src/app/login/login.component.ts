@@ -43,10 +43,8 @@ export class LoginComponent implements OnInit {
     return this.http.post(LOGIN_URL,data,
     { 
       responseType: 'text' as 'json'}).subscribe(
-      data => {
-        //this.tokenStorage.saveToken(data.token);
-        let res:any;
-        this.tokenStorage.saveUser(data);
+        (data) => {
+        //this.tokenStorage.saveUser(data);
         console.log(data)
         
         // if(data.roles=='nurse' || data.role == 'physician') {
@@ -54,9 +52,10 @@ export class LoginComponent implements OnInit {
         // } else if (data.role== 'admin'){
         //   this.router.navigate(['/core/admin/hospitalUserList']);
         // } 
-         //if (data.roles == 'ROLE_PATIENT') {
+        // if (data.roles == 'ROLE_PATIENT') {
           console.log("11111111111111111");
           this.router.navigate(['/core']);
+         //}
         
       },
       err => {
@@ -71,4 +70,5 @@ export class LoginComponent implements OnInit {
     else
     this.loginForm.value.isEmployee = false;
   }
+  
 }

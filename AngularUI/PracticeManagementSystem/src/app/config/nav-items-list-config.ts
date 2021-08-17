@@ -8,25 +8,26 @@ export const NAV_ITEMS_LIST = [
     {
         permitTo: ['nurse'], icon: 'notes', navItem: 'Vital Signs', route: 'visit/vital_form'
     },
+    
+    // {
+    //     permitTo: ['physician'], icon: 'calendar_today', navItem: 'Calendar', route: 'schedule/calendarapi'
+    // },
+  
+   
     {
-        permitTo: ['admin'], icon: 'notes', navItem: 'User Registration', route: 'admin/userRegistration'
+        permitTo: ['patient'], icon: 'details', navItem: 'Patient Details', route: 'usermanagement/patient_details'
     },
     {
-        permitTo: ['physician'], icon: 'notes', navItem: 'Appointment Details', route: 'schedule/appointmentDetails'
+        permitTo: ['admin'], icon: 'people', navItem: 'Patient users', route: 'admin/userList'
     },
     {
-        permitTo: ['physician'], icon: 'calendar_today', navItem: 'Calendar', route: 'schedule/calendarapi'
+        permitTo: ['admin'], icon: 'supervised_user_circle', navItem: 'Hospital Users', route: 'admin/hospitalUserList'
     },
     {
-        permitTo: ['patient'], icon: 'notes', navItem: 'Book Appointment', route: 'visit/appointment_form'
+        permitTo: ['patient'], icon: 'schedule', navItem: 'Book Appointment', route: 'visit/appointment_form'
     },
+    
     {
-        permitTo: ['admin'], icon: 'people', navItem: 'Patients', route: 'admin/userList'
-    },
-    {
-        permitTo: ['patient'], icon: 'create', navItem: 'Demographics Details', route: 'usermanagement/patient_details'
-    },
-    {
-        permitTo: ['admin'], icon: 'create', navItem: 'Hospital user List', route: 'admin/hospitalUserList'
+        permitTo: ['physician'], icon: 'event_note', navItem: 'Appointment Details', route: 'schedule/appointmentDetails'
     }
 ];
