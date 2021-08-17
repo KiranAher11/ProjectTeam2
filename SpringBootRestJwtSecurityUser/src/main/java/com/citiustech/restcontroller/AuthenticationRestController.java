@@ -31,6 +31,7 @@ import com.citiustech.request.LoginRequest;
 import com.citiustech.request.SignUpRequest;
 import com.citiustech.response.JwtResponse;
 import com.citiustech.response.MessageResponse;
+import com.citiustech.service.RegistrationService;
 import com.citiustech.util.JwtUtils;
 import com.citiustech.util.RolesUtils;
 
@@ -53,6 +54,9 @@ public class AuthenticationRestController {
 	
 	@Autowired
 	private PasswordEncoder encoder;
+	
+	@Autowired
+	private RegistrationService registrationService;
 	
 	//login
 	@PostMapping("/login")
@@ -144,7 +148,23 @@ public class AuthenticationRestController {
 		user.setRoles(dbRoles);
 		userRepository.save(user);
 		
-		return ResponseEntity.ok(new MessageResponse("User Registered Successfully!"));
+		String role = signupRequest.getRole();
+		
+		String response = null ;
+		
+		switch(role) {
+			case "ROLE_PATIENT" : response = registrationService.registeredThePatient(signupRequest);
+				break;
+			case "ROLE_PHYSICIAN" : response = registrationService.registeredThePhysician(signupRequest);
+				break;
+			case "ROLE_NURSE_ROLE" : response = registrationService.registeredTheEmployee(signupRequest);
+				break;
+			case "ROLE_ADMIN" : response = registrationService.registeredTheEmployee(signupRequest);
+				break;
+				
+		}
+		
+		return ResponseEntity.ok(response);
 				
 	}
 	
