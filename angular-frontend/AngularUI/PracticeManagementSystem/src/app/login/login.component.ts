@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     { 
       responseType: 'text' as 'json'}).subscribe(
         (data) => {
-        //this.tokenStorage.saveUser(data);
+        this.tokenStorage.saveUser(data);
         console.log(data)
         
         // if(data.roles=='nurse' || data.role == 'physician') {
