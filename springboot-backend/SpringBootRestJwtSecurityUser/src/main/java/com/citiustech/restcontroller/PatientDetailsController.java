@@ -19,14 +19,15 @@ import com.citiustech.response.MessageResponse;
 
 //@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/auth")
-
+@RequestMapping("/details")
 public class PatientDetailsController {
 
 	@Autowired
 	private PatientDetailsRepository patientDetailsRepository;
+	
 	@Autowired
 	private PatientAddressRepository patientAddressRepository;
+	
 	@Autowired
 	private KinRepository kinRepository;
 
@@ -56,6 +57,7 @@ public class PatientDetailsController {
 			  patientDetailsData.getKin().getFirstName(),
 			  patientDetailsData.getKin().getLastName(),
 			  patientDetailsData.getKin().getTitle());
+	  
 	  kinRepository.save(kin);
 	  
 	  //Patient's Allergy 
@@ -73,10 +75,11 @@ public class PatientDetailsController {
 	  patientDetailsData.getPatientDetails().getAge(),
 	  patientDetailsData.getPatientDetails().getRace(),
 	  patientDetailsData.getPatientDetails().getEthnicity(),
-	  patientDetailsData.getPatientDetails().getLanguagesKnown(),patientDetailsData
-	  .getPatientDetails().getGender(),
+	  patientDetailsData.getPatientDetails().getLanguagesKnown(),
+	  patientDetailsData.getPatientDetails().getGender(),
 	  patientDetailsData.getPatientDetails().getDateOfBirth(),
-	  address,kin);
+	  address,
+	  kin);
 	  
 	  patientDetailsRepository.save(details); return ResponseEntity.ok(new
 	  MessageResponse("Patient Details Saved Successfully!"));

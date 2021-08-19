@@ -1,7 +1,6 @@
 package com.citiustech.model;
 
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -37,7 +35,7 @@ public class PatientDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long patient_details_id;
+	private long id;
 	
 	@NotBlank
 	@Size(max = 120)
@@ -86,11 +84,11 @@ public class PatientDetails {
 	private Date dateOfBirth;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinTable(name = "PatientAddress", joinColumns = @JoinColumn(name = "patient_details_id"), inverseJoinColumns = @JoinColumn(name = "addressId"))
+	//@JoinTable(name = "PatientAddress", joinColumns = @JoinColumn(name = "address_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
 	private PatientAddress patientAdress;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinTable(name = "Kin", joinColumns = @JoinColumn(name = "patient_details_id"), inverseJoinColumns = @JoinColumn(name = "kinId"))
+	//@JoinTable(name = "Kin", joinColumns = @JoinColumn(name = "kin_id"), inverseJoinColumns = @JoinColumn(name = "kin_id"))
 	private Kin kin;
 	
 	public PatientDetails() {

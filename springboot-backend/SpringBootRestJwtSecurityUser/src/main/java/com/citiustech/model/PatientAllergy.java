@@ -16,7 +16,7 @@ import lombok.Data;
 public class PatientAllergy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int patientAllergyId;
+	private long patientAllergyId;
 	
 	@Column(name="allergy_id")
 	private String allergy_id;
