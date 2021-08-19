@@ -8,7 +8,7 @@ import {AppointmentFormComponent  } from './appointment-form/appointment-form.co
 const routes: Routes = [
   // { path : 'visit_details', component : VisitHistoryComponent},
   // { path: 'visit_form', component: VisitFormComponent },
-  { path: 'appointment_form', component: AppointmentFormComponent },
+  { path: 'appointmentForm', component: AppointmentFormComponent },
   // { path: 'vital_form', component: VitalSignsComponent }
 ];
 
