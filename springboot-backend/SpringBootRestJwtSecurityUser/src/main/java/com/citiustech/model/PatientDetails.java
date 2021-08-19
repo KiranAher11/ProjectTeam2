@@ -1,7 +1,6 @@
 package com.citiustech.model;
 
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,15 +27,15 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-//@Entity
-//@Table(name = "patientDetails", uniqueConstraints = {
-            //    @UniqueConstraint(columnNames = "email") })
+@Entity
+@Table(name = "patientDetails", uniqueConstraints = {
+                @UniqueConstraint(columnNames = "email") })
 @Component
 public class PatientDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long patient_id;
+	private long id;
 	
 	@NotBlank
 	@Size(max = 120)
@@ -84,6 +83,13 @@ public class PatientDetails {
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 	
+	@OneToOne(fetch = FetchType.EAGER)
+	//@JoinTable(name = "PatientAddress", joinColumns = @JoinColumn(name = "address_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
+	private PatientAddress patientAdress;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	//@JoinTable(name = "Kin", joinColumns = @JoinColumn(name = "kin_id"), inverseJoinColumns = @JoinColumn(name = "kin_id"))
+	private Kin kin;
 	
 	public PatientDetails() {
 		
@@ -94,7 +100,8 @@ public class PatientDetails {
 			@Size(max = 25) String lastName, @Size(max = 15) String contactNumber,
 			@NotBlank @Size(max = 50) @Email @NonNull String email, int age,
 			@NotBlank @Size(max = 120) @NonNull String race, @NotBlank @Size(max = 120) @NonNull String ethnicity,
-			@NotBlank @Size(max = 120) @NonNull String languagesKnown, EGender gender, Date dateOfBirth) {
+			@NotBlank @Size(max = 120) @NonNull String languagesKnown, EGender gender, Date dateOfBirth , PatientAddress patientAddress,
+			Kin kin) {
 		super();
 		this.title = title;
 		this.firstName = firstName;
@@ -107,6 +114,8 @@ public class PatientDetails {
 		this.languagesKnown = languagesKnown;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
+		this.patientAdress = patientAddress;
+		this.kin = kin;
 	}
 	
     

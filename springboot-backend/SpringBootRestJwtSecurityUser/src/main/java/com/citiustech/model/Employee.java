@@ -26,7 +26,7 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-//@Entity
+@Entity
 @Table(name = "employee", uniqueConstraints = {
                 @UniqueConstraint(columnNames = "email") })
 public class Employee {

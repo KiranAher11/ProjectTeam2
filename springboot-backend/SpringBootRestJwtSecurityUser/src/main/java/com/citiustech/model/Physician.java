@@ -26,7 +26,7 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-//@Entity
+@Entity
 @Table(name = "physicians", uniqueConstraints = {
                 @UniqueConstraint(columnNames = "email") })
 public class Physician {
@@ -61,11 +61,14 @@ public class Physician {
 
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
+	
+	private String specialization;
 
 	
 	public Physician(@NotBlank @Size(max = 50) @Email @NonNull String email,
 			@NotBlank @Size(max = 120) @NonNull String password, @NotNull @Size(max = 25) String firstName,
-			@Size(max = 25) String lastName, @Size(max = 15) String contactNumber, EGender gender, Date dateOfBirth) {
+			@Size(max = 25) String lastName, @Size(max = 15) String contactNumber, EGender gender, Date dateOfBirth,
+			String specialization) {
 		super();
 		this.email = email;
 		this.password = password;
@@ -74,6 +77,7 @@ public class Physician {
 		this.contactNumber = contactNumber;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
+		this.specialization =specialization;
 		
 	}
 	
