@@ -53,5 +53,7 @@ public class SignUpRequest {
     //private HashSet<String> role;
 	
 	private String role;
+	
+	private String specialization;
 
 }

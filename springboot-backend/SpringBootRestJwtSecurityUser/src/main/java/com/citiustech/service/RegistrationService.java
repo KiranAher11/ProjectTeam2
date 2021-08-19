@@ -6,9 +6,10 @@ import org.springframework.stereotype.Service;
 
 import com.citiustech.model.Employee;
 import com.citiustech.model.Patient;
-import com.citiustech.model.User;
+import com.citiustech.model.Physician;
 import com.citiustech.repo.EmployeeRepository;
 import com.citiustech.repo.PatientRepository;
+import com.citiustech.repo.PhysicianRepository;
 import com.citiustech.request.SignUpRequest;
 
 @Service
@@ -19,6 +20,9 @@ public class RegistrationService {
 		
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private PhysicianRepository physicianRepository;
 	
 	@Autowired
 	private PasswordEncoder encoder;
@@ -55,16 +59,17 @@ public class RegistrationService {
 	}
 	
 	public String  registeredThePhysician(SignUpRequest signupRequest) {
-		Employee employee = new Employee(
+		Physician physician = new Physician(
 				signupRequest.getEmail(),
 				encoder.encode(signupRequest.getPassword()),
 				signupRequest.getFirstName(),
 				signupRequest.getLastName(),
 				signupRequest.getContactNumber() ,
 				signupRequest.getGender(),
-				signupRequest.getDateOfBirth());
+				signupRequest.getDateOfBirth(),
+				signupRequest.getSpecialization());
 		
-		employeeRepository.save(employee);
+		physicianRepository.save(physician);
 		
 		return "Physician registered successfully" ;
 	}

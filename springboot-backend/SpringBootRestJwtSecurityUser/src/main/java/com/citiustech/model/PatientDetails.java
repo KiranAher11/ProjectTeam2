@@ -89,6 +89,9 @@ public class PatientDetails {
 	@JoinTable(name = "PatientAddress", joinColumns = @JoinColumn(name = "patient_details_id"), inverseJoinColumns = @JoinColumn(name = "addressId"))
 	private PatientAddress patientAdress;
 	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinTable(name = "Kin", joinColumns = @JoinColumn(name = "patient_details_id"), inverseJoinColumns = @JoinColumn(name = "kinId"))
+	private Kin kin;
 	
 	public PatientDetails() {
 		
@@ -99,7 +102,8 @@ public class PatientDetails {
 			@Size(max = 25) String lastName, @Size(max = 15) String contactNumber,
 			@NotBlank @Size(max = 50) @Email @NonNull String email, int age,
 			@NotBlank @Size(max = 120) @NonNull String race, @NotBlank @Size(max = 120) @NonNull String ethnicity,
-			@NotBlank @Size(max = 120) @NonNull String languagesKnown, EGender gender, Date dateOfBirth , PatientAddress patientAddress) {
+			@NotBlank @Size(max = 120) @NonNull String languagesKnown, EGender gender, Date dateOfBirth , PatientAddress patientAddress,
+			Kin kin) {
 		super();
 		this.title = title;
 		this.firstName = firstName;
@@ -113,6 +117,7 @@ public class PatientDetails {
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
 		this.patientAdress = patientAddress;
+		this.kin = kin;
 	}
 	
     

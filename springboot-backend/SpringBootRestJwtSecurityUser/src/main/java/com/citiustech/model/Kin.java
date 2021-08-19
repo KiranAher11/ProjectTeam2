@@ -12,8 +12,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-//@Entity
-//@Table(name="patient_address")
+@Entity
+@Table(name="kin")
 @Component
 public class Kin {
 	
