@@ -1,5 +1,6 @@
 
 <mat-horizontal-stepper #stepper>
+  
   <form style="text-align:center;"  #patientDetails = "ngForm" name="multistep" [formGroup]="multistep">
     
       <mat-step [stepControl]="firstFormGroup">
@@ -8,7 +9,8 @@
       <div formGroupName="patientDetails">
       <ng-template matStepLabel>Patient Details</ng-template>
       
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field class="width-50">
         <mat-label>Title</mat-label>
         <select id = "title1"  formControlName="title" matNativeControl id="mySelectId">
           <option value="" disabled selected></option>
@@ -18,21 +20,25 @@
           <option value="Dr">DR</option>
         </select> 
       </mat-form-field><br>
-      <mat-form-field>
+      <!-- <mat-form-field> -->
+        <mat-form-field class="width-50"> 
         <mat-label>First Name</mat-label>
         <input id = "firstName1" formControlName="firstName" matInput placeholder="First name" required>
-      </mat-form-field>&nbsp;&nbsp;
-      <mat-form-field>
+      </mat-form-field>
+      <!-- <mat-form-field> -->
+        <mat-form-field  class="width-50 ml-2">
         <mat-label>Last Name</mat-label>
         <input  formControlName="lastName" matInput placeholder="Last name" required>
       </mat-form-field><br>
-      <mat-form-field>
+      <!-- <mat-form-field> -->
+        <mat-form-field class="width-50">
         <mat-label>Date of Birth</mat-label>
         <input formControlName="dateOfBirth" matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>&nbsp;&nbsp;
-      <mat-form-field>
+      </mat-form-field>
+      <!-- <mat-form-field> -->
+        <mat-form-field class="width-50 ml-2">
         <mat-label>Age</mat-label>
         <input formControlName="age" matInput required>
       </mat-form-field><br>
@@ -42,59 +48,72 @@
           <mat-radio-button value="2">Female</mat-radio-button>
           <mat-radio-button value="3">Other</mat-radio-button>
         </mat-radio-group><br>
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field class="width-50">
           <mat-label>Race</mat-label>
           <input formControlName="race" matInput>
-        </mat-form-field>&nbsp;&nbsp;
-        <mat-form-field>
+        </mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field  class="width-50 ml-2">
           <mat-label>Ethnicity</mat-label>
           <input formControlName="ethnicity" matInput>
         </mat-form-field><br>
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field class="width-100">
           <mat-label>Languages Known</mat-label>
           <input formControlName="languagesKnown" matInput>
 
   </mat-form-field><br>
-  <mat-form-field>
+  <!-- <mat-form-field> -->
+    <mat-form-field class="width-50">
     <mat-label>Email</mat-label>
     <input formControlName="email" matInput placeholder="Ex. pat@example.com" required>
-  </mat-form-field>&nbsp;&nbsp;
-  <mat-form-field>
+  </mat-form-field>
+  <!-- <mat-form-field> -->
+    <mat-form-field  class="width-50 ml-2">
     <mat-label>Contact Number</mat-label>
     <input formControlName="contactNumber" matInput required>
 
 </mat-form-field><br>
  
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <!-- <button mat-button matStepperNext>Next</button> -->
+        <button mat-raised-button color="accent" matStepperNext>Next</button>
       </div>
     </div>
   </mat-step>
+
   <mat-step [stepControl]="secondFormGroup">
     <div formGroupName="address">
       <ng-template matStepLabel>Address</ng-template>
-      <mat-form-field>
+      <!-- <mat-form-field> -->
+        <mat-form-field class="width-50">
         <mat-label>Address</mat-label>
         <input formControlName="address" matInput >
         
       </mat-form-field><br>
-      <mat-form-field>
+      <!-- <mat-form-field> -->
+        <mat-form-field class="width-50">
         <mat-label>City</mat-label>
         <input  matInput formControlName="city" placeholder="Ex. San Francisco">
         
-      </mat-form-field>&nbsp;&nbsp;
-      <mat-form-field>
+      </mat-form-field>
+      <!-- <mat-form-field> -->
+        <mat-form-field class="width-50 ml-2">
         <mat-label>State</mat-label>
         <input formControlName="state" matInput placeholder="Ex. California">
         
       </mat-form-field><br>
-      <mat-form-field>
+      <!-- <mat-form-field> -->
+        <mat-form-field class="width-50" >
         <mat-label>Country</mat-label>
         <input  formControlName="country" matInput placeholder="Ex. America">
 
         
-      </mat-form-field>&nbsp;&nbsp;
-      <mat-form-field>
+      </mat-form-field>
+      <!-- <mat-form-field> -->
+        
+      <mat-form-field class="width-50 ml-2">
         <mat-label>Postal Code</mat-label>
         <input formControlName="postalCode" matInput #postalCode maxlength="5" placeholder="Ex. 941054">
         <mat-hint>{{postalCode.value.length}} / 6</mat-hint>
@@ -102,15 +121,18 @@
         
       
       <div>
-        <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
-        <button  mat-button matStepperNext>Next</button>
+        <!-- <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
+        <button  mat-button matStepperNext>Next</button> -->
+        <button  mat-raised-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;
+        <button mat-raised-button color="accent" matStepperNext>Next</button>
       </div>
     </div>
   </mat-step>
   <mat-step [stepControl]="thirdFormGroup">
     <div formGroupName="kin">
       <ng-template matStepLabel>Next Of Kin</ng-template>
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field class="width-50">
           <mat-label>Title</mat-label>
           <select   matNativeControl id="mySelectId">
             <option value="" disabled selected></option>
@@ -120,15 +142,18 @@
             <option value="Dr">DR</option>
           </select> 
         </mat-form-field><br>
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field class="width-50">
           <mat-label>First Name</mat-label>
           <input formControlName="firstName" matInput placeholder="First name" required>
-        </mat-form-field>&nbsp;&nbsp;
-        <mat-form-field>
+        </mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field  class="width-50 ml-2">
           <mat-label>Last Name</mat-label>
           <input formControlName="lastName" matInput placeholder="Last name" required>
         </mat-form-field><br>
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field class="width-50">
           <mat-label>Relationship</mat-label>
           <select formControlName="relationship" matNativeControl id="mySelectId">
             <option value="" disabled selected></option>
@@ -140,19 +165,23 @@
           </select> 
         </mat-form-field><br>
 
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field class="width-50">
           <mat-label>Email</mat-label>
           <input formControlName="email" matInput placeholder="Ex. pat@example.com" required>
-        </mat-form-field>&nbsp;&nbsp;
-        <mat-form-field>
+        </mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field  class="width-50 ml-2">
           <mat-label>Contact Number</mat-label>
           <input  formControlName="contactNumber" matInput required>
       
       </mat-form-field>
     
       <div>
-        <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
-        <button mat-button matStepperNext>Next</button>
+        <!-- <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
+        <button mat-button matStepperNext>Next</button> -->
+        <button  mat-raised-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;
+        <button mat-raised-button color="accent" matStepperNext>Next</button>
       </div>
     </div>
   </mat-step>
@@ -165,17 +194,21 @@
         <mat-radio-button value =2>No</mat-radio-button>
        
       </mat-radio-group><br>
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field  class="width-50">
           <mat-label>Allergy Id</mat-label>
           <input formControlName="allergyId" matInput>
         </mat-form-field><br>
-        <mat-form-field>
+        <!-- <mat-form-field> -->
+          <mat-form-field  class="width-50">
           <mat-label>Allergy Type</mat-label>
           <input formControlName="allergyType" matInput>
         </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
-        <button type="submit" mat-button matStepperNext>Next</button>
+        <!-- <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
+        <button type="submit" mat-button matStepperNext>Next</button> -->
+        <button  mat-raised-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;
+        <button mat-raised-button color="accent" matStepperNext>Next</button>
       </div>
     </div>
   </mat-step>
@@ -184,10 +217,13 @@
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>
     <div>
-      <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
-      <button mat-button (click)="stepper.reset()">Reset</button>&nbsp;&nbsp;
+      <!-- <button mat-button matStepperPrevious>Back</button>&nbsp;&nbsp;
+      <button mat-button (click)="stepper.reset()">Reset</button>&nbsp;&nbsp; -->
+      <button  mat-raised-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;
+      <button mat-raised-button color="warn" (click)="stepper.reset()">Reset</button>&nbsp;&nbsp;
+      <button mat-raised-button color="primary" (click)="doPatient(patientDetails.value)">Submit</button>
 
-      <button mat-button (click)="doPatient(patientDetails.value)">Submit</button>
+      <!-- <button mat-button (click)="doPatient(patientDetails.value)">Submit</button> -->
     </div>
   </mat-step>
 </form>
