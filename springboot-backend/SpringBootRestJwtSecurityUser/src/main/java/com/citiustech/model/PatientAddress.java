@@ -1,16 +1,23 @@
 package com.citiustech.model;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
 @Data
-//@Entity
-//@Table(name="patient_address")
+@Entity
+@Table(name="patientAddress")
 @Component
 public class PatientAddress {
 	
@@ -22,6 +29,10 @@ public class PatientAddress {
 	private String state;
 	private String country;
 	private String postalCode;
+	
+	//@OneToOne(fetch = FetchType.EAGER)
+	//@JoinTable(name = "patientDetails", joinColumns = @JoinColumn(name = "addressId"), inverseJoinColumns = @JoinColumn(name = "patient_details_id"))
+	//private PatientDetails patientDetails;
 	
 	public PatientAddress() {
 		

@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,15 +29,15 @@ import lombok.Data;
 import lombok.NonNull;
 
 @Data
-//@Entity
-//@Table(name = "patientDetails", uniqueConstraints = {
-            //    @UniqueConstraint(columnNames = "email") })
+@Entity
+@Table(name = "patientDetails", uniqueConstraints = {
+                @UniqueConstraint(columnNames = "email") })
 @Component
 public class PatientDetails {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long patient_id;
+	private Long patient_details_id;
 	
 	@NotBlank
 	@Size(max = 120)
@@ -84,6 +85,10 @@ public class PatientDetails {
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinTable(name = "PatientAddress", joinColumns = @JoinColumn(name = "patient_details_id"), inverseJoinColumns = @JoinColumn(name = "addressId"))
+	private PatientAddress patientAdress;
+	
 	
 	public PatientDetails() {
 		
@@ -94,7 +99,7 @@ public class PatientDetails {
 			@Size(max = 25) String lastName, @Size(max = 15) String contactNumber,
 			@NotBlank @Size(max = 50) @Email @NonNull String email, int age,
 			@NotBlank @Size(max = 120) @NonNull String race, @NotBlank @Size(max = 120) @NonNull String ethnicity,
-			@NotBlank @Size(max = 120) @NonNull String languagesKnown, EGender gender, Date dateOfBirth) {
+			@NotBlank @Size(max = 120) @NonNull String languagesKnown, EGender gender, Date dateOfBirth , PatientAddress patientAddress) {
 		super();
 		this.title = title;
 		this.firstName = firstName;
@@ -107,6 +112,7 @@ public class PatientDetails {
 		this.languagesKnown = languagesKnown;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
+		this.patientAdress = patientAddress;
 	}
 	
     
