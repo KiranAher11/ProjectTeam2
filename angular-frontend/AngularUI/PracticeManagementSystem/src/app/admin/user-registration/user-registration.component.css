@@ -59,14 +59,7 @@
         padding-right: 10px;
         line-height: 21px;
     }
-    .home-address{
-        width: 100%;
-        padding-left: 10px;
-        padding-right: 10px;
-        line-height: 11px;
-    }
-    
-    
+   
     
     .mob-num,.dob,.race
     ,.ethinicity,
@@ -79,17 +72,12 @@
      padding-right: 3px;
     
     }
+    .role{
     
-    .specialization{
-        width: 100%;
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-
-    .experience{
         width: 100%;
         padding-left: 10px;
-        padding-right: 5px;
+        padding-right: 10px;
+        line-height: 21px;
     }
     .fname{
         width: 100%;

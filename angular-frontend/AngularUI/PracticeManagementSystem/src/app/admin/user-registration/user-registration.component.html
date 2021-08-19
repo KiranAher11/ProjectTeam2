@@ -6,15 +6,12 @@
      
  <mat-card class="box">
        <mat-card-header>
-             <mat-card-title>Employee Registration</mat-card-title>
+             <mat-card-title>Register Employee</mat-card-title>
        </mat-card-header>
        <br>
       <!-- <p class="login-box-msg">Register a new membership</p> -->
       <form  [formGroup]="userRegisterForm" (ngSubmit)="userRegister()">
        <mat-card-content>
-
-   
-          
              <!-- Title -->
              <mat-form-field class="title">
               <mat-label>Title</mat-label>
@@ -111,87 +108,26 @@
                 Gender is required
              </mat-error>
             </mat-form-field>
-           
-
-
-             
-               <mat-form-field class="home-address">
-                 <mat-label>Address</mat-label>
-                 <textarea matInput formControlName="address"placeholder="address"></textarea>
-                 <mat-error *ngIf="userRegisterForm.controls['address'].hasError('required')">
-                   Address is <strong>required</strong>
-                  </mat-error>
-               </mat-form-field>
-             </div>
-
-         <div class="specialization" fxLayout="row" > 
-             <mat-form-field class="specialization" >
-              <mat-label >Specialization</mat-label>
-               <input matInput placeholder="Specialization" formControlName="specialization"   >
-                <mat-error *ngIf="userRegisterForm.controls['specialization'].hasError('required')">
-                  Specialization is <strong>required</strong>
-                </mat-error>
-                <mat-error *ngIf="userRegisterForm.controls['specialization'].hasError('minLength')">
-                    Specialization should be of<strong>minimum 3 characters</strong>
-                </mat-error>
-                <mat-icon matSuffix style="font-size: 17px; padding-right: 4px;padding-bottom: 0px;">work</mat-icon>
+          </div>
+          <div fxLayout="row">
+            <mat-form-field  class="role">
+              <mat-label>Role</mat-label>
+              <select matNativeControl required formControlName="role" class="form-control" >
+                <option value="physician">Physician</option>
+                <option value="nurse">Nurse</option>
+              </select>
+              <mat-error *ngIf="userRegisterForm.controls['role'].hasError('required')">
+                  Role is required
+              </mat-error> 
             </mat-form-field>
+          </div>
 
-           
-              <!-- Experience -->
-            <mat-form-field class="experience">
-              <mat-label>Experience In Years</mat-label>
-              <input  type="number" min="1" matInput placeholder="Experience In Years"  formControlName="experience" >
-              <mat-error *ngIf="userRegisterForm.controls['experience'].hasError('required')">
-                Experience is required
-             </mat-error>
-            </mat-form-field>
-       </div>
-<!--         
-               <form [formGroup]="userRegisterForm"> -->
-                 <!-- Password -->
-                 <!-- <div fxLayout="row"> -->
-                  <!-- <mat-form-field class="example-full-width">
-                      <input matInput [type]="passhide ? 'password' : 'text'"  formControlName="password" placeholder="Password">
-                        <button type="button" mat-icon-button matSuffix (click)="passhide = !passhide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passhide">
-                           <mat-icon>{{passhide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                       </button>
-                      <mat-error *ngIf="userRegisterForm.controls['password'].hasError('required')">
-                         Password is required
-                     </mat-error>
-                     <mat-error *ngIf="(userRegisterForm.controls['password'].hasError('minLength')) || ! (userRegisterForm.controls['password'].hasError('required')) ">
-                       Password should be of minimum 6 characters
-                     </mat-error>
-                  </mat-form-field>
-
-                  <mat-form-field class="example-full-width">
-                      <input matInput [type]="confpasshide ? 'password' : 'text'"  formControlName="confirmPassword" placeholder="Confirm Password">
-                      <button type="button" mat-icon-button matSuffix (click)="confpasshide = !confpasshide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="confpasshide">
-                          <mat-icon>{{confpasshide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                       </button>
-                      <mat-error *ngIf="userRegisterForm.controls['confirmPassword'].hasError('required')">
-                          Confirm  Password is required
-                      </mat-error>
-                      <mat-error *ngIf="(userRegisterForm.controls['confirmPassword'].hasError('MustMatch')) || !(userRegisterForm.controls['confirmPassword'].hasError('required'))">
-                       Password Must Match
-                     </mat-error>
-                  </mat-form-field>
-              </div>
-               </form> -->
-        
-     </mat-card-content>
-       
-     <!-- <div class="alert" *ngIf="alert" mat-dialog-content><strong>Success! </strong> User Registration has been submitted</div>
-        <div mat-dialog-actions> -->
-          <!-- <button class="alert" (click)="closeAlert()" *ngIf="alert" mat-button mat-dialog-close>Close</button> -->
-        <!-- </div> -->
-            <button  mat-raised-button color="primary" class="btn-block">Register</button>
-          
+        </mat-card-content>
+        <button  mat-raised-button color="primary" class="btn-block">Register</button>
       </form>
 
       <br>
 
-     <!-- <div fxLayout="row" style="padding-left: 120px; padding-top: 30px;"><p>Already Have an account?</p><a routerLink="" style="float: left; padding-left: 10px; padding-bottom: 20px;">Log In Here</a></div> -->
       
      </mat-card>
    

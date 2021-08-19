@@ -12,8 +12,7 @@ export const NAV_ITEMS_LIST = [
     // {
     //     permitTo: ['physician'], icon: 'calendar_today', navItem: 'Calendar', route: 'schedule/calendarapi'
     // },
-  
-   
+    { permitTo: ['admin'], icon: 'how_to_reg', navItem: 'Register Employee', route: 'admin/userRegistration'},
     {
         permitTo: ['patient'], icon: 'details', navItem: 'Patient Details', route: 'usermanagement/patient_details'
     },
@@ -29,5 +28,9 @@ export const NAV_ITEMS_LIST = [
     
     {
         permitTo: ['physician'], icon: 'event_note', navItem: 'Appointment Details', route: 'schedule/appointmentDetails'
+    },
+    {
+        permitTo: ['physician','patient','admin','nurse'], icon: 'info', navItem: 'About CT', route: 'admin/about'
     }
+
 ];
