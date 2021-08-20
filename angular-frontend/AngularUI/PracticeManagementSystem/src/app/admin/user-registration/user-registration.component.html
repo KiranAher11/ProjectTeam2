@@ -68,15 +68,22 @@
 
                 <!-- Email -->
                <mat-form-field class="example-full-width">
-                 <input type="text" matInput  formControlName="emailId"   placeholder="Email">
-                  <mat-error *ngIf="userRegisterForm.controls['emailId'].hasError('required')">
+                 <input type="text" matInput  formControlName="email"   placeholder="Email">
+                  <mat-error *ngIf="userRegisterForm.controls['email'].hasError('required')">
                     Email is required
                   </mat-error>
-                  <mat-error *ngIf="(userRegisterForm.controls['emailId'].hasError('emailId')) || (!userRegisterForm.controls['emailId'].hasError('required'))">
+                  <mat-error *ngIf="(userRegisterForm.controls['email'].hasError('email')) || (!userRegisterForm.controls['email'].hasError('required'))">
                     Email should be in proper format
                   </mat-error>
                   <mat-icon matSuffix style="font-size: 15px; padding-right: 4px;padding-bottom: 0px;"> email</mat-icon>
              </mat-form-field>
+
+
+             <mat-form-field hidden>
+              <input type="text" matInput  formControlName="password"   placeholder="password">
+               <mat-icon matSuffix style="font-size: 15px; padding-right: 4px;padding-bottom: 0px;"> Password</mat-icon>
+            </mat-form-field>
+
            </div>
 
       
@@ -86,10 +93,10 @@
                   <!-- DOB -->
                   <mat-form-field class="dob">
                     <mat-label>Date Of Birth</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="dob"   [max]="maxDate"  >
+                    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth"   [max]="maxDate"  >
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="userRegisterForm.controls['dob'].hasError('required')">
+                    <mat-error *ngIf="userRegisterForm.controls['dateOfBirth'].hasError('required')">
                       Date Of Birth is required
                      </mat-error>
                     </mat-form-field>
@@ -100,9 +107,9 @@
             <mat-form-field  class="gender">
               <mat-label>Gender</mat-label>
               <select matNativeControl required formControlName="gender"  >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+                <option value="OTHER">Other</option>
               </select>
               <mat-error *ngIf="userRegisterForm.controls['gender'].hasError('required')">
                 Gender is required
@@ -113,13 +120,26 @@
             <mat-form-field  class="role">
               <mat-label>Role</mat-label>
               <select matNativeControl required formControlName="role" class="form-control" >
-                <option value="physician">Physician</option>
-                <option value="nurse">Nurse</option>
+                <option value="ROLE_PHYSICIAN">Physician</option>
+                <option value="ROLE_NURSE">Nurse</option>
               </select>
               <mat-error *ngIf="userRegisterForm.controls['role'].hasError('required')">
                   Role is required
               </mat-error> 
             </mat-form-field>
+          </div>
+          <div class="specialization" fxLayout="row" > 
+            <mat-form-field class="specialization" >
+             <mat-label >Specialization</mat-label>
+              <input matInput placeholder="Specialization" formControlName="specialization"   >
+               <mat-error *ngIf="userRegisterForm.controls['specialization'].hasError('required')">
+                 Specialization is <strong>required</strong>
+               </mat-error>
+               <mat-error *ngIf="userRegisterForm.controls['specialization'].hasError('minLength')">
+                   Specialization should be of<strong>minimum 3 characters</strong>
+               </mat-error>
+               <mat-icon matSuffix style="font-size: 17px; padding-right: 4px;padding-bottom: 0px;">work</mat-icon>
+           </mat-form-field>
           </div>
 
         </mat-card-content>
