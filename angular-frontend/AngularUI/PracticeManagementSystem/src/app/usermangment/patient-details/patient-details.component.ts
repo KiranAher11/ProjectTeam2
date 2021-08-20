@@ -32,7 +32,7 @@ export class PatientDetailsComponent implements OnInit{
       contactNumber : new FormControl('')
      }),
      address: new FormGroup({
-      address : new FormControl(''),
+      street : new FormControl(''),
       city : new FormControl(''),
       state : new FormControl(''),
       country : new FormControl(''),
@@ -71,7 +71,7 @@ export class PatientDetailsComponent implements OnInit{
 
     doPatient(data:any){
     console.log(data);
-      return this.http.post("http://localhost:9900/api/auth/patient",data,{responseType: 'text' as 'json'}).subscribe((result)=>{
+      return this.http.post("http://localhost:9900/api/details/patient",data,{responseType: 'text' as 'json'}).subscribe((result)=>{
       console.log("Result",result);
 }) 
 
