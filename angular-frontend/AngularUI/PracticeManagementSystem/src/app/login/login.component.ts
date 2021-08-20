@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   successMessage:any;
   invalidLogin = false;
   loginSuccess = false;
-  hide: boolean=false;
+  hide: boolean=true;
+  
 
   constructor(private router:Router,
     private tokenStorage: TokenStorageService, 
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService ) {}
 
   ngOnInit(){}
+
 
   loginForm:FormGroup = this.fb.group({
   email :['',[Validators.required,Validators.email]],
@@ -44,7 +46,7 @@ export class LoginComponent implements OnInit {
     { 
       responseType: 'text' as 'json'}).subscribe(
         (data) => {
-        this.tokenStorage.saveUser(data);
+        //this.tokenStorage.saveUser(data);
         console.log(data)
         
         // if(data.roles=='nurse' || data.role == 'physician') {

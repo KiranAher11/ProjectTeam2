@@ -28,6 +28,7 @@
             <div>
                 <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Password</mat-label>
+                    
                     <input  type= "password" id = "password" formControlName="password"  matInput [type]="hide ? 'password' : 'text'" required/>
                     <button mat-icon-button matSuffix (click)="hide =!hide"
                         [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
@@ -50,10 +51,12 @@
             </div>
             <div class = "button-row" style="text-align:center">
                 <tr>
-                    <a routerLink="user-registration"><p class="register" style="font-family: 'Times New Roman';font-weight: bolder;">New to CT General?
+                    <!-- <a routerLink="user-registration"><p class="register" style="font-family: 'Times New Roman';font-weight: bolder;">New to CT General?
                         <span style="color:blue;font-weight: bolder;">Sign Up</span></p>
+                    </a> -->
+                    <a routerLink="userRegistration"><p class="register" style="font-family: 'Times New Roman';color:blue;font-weight: bolder;">New to CT General? Sign Up
                     </a>
-                    <a routerLink="forgot-password"><p class="forgot-password" style="font-family: 'Times New Roman';font-weight: bolder;">Forgot Password?
+                    <a routerLink="forgotPassword"><p class="forgot-password" style="font-family: 'Times New Roman';color:blue;font-weight: bolder;">Forgot Password?
                     </a>
                     <!-- <a routerLink="change-password"><p style="font-family: 'Times New Roman';font-weight: bolder;">Change Password?
                     </a> -->

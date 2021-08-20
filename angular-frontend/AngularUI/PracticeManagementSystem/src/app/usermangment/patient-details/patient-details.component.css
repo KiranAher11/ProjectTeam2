@@ -20,6 +20,11 @@
   width: 100%;
 }
 
-td {
-  padding-right: 8px;
-}
+
+
+.width-50{width: 15%;}
+.ml-1{margin-left: 1%;}
+.ml-2{margin-left: 2%;}
+.width-100{width: 31%;}
+.width-25{width: 25%;}
+
