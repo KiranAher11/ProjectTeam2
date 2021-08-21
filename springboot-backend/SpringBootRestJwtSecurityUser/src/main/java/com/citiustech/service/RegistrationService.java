@@ -1,5 +1,7 @@
 package com.citiustech.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -7,10 +9,12 @@ import org.springframework.stereotype.Service;
 import com.citiustech.model.Employee;
 import com.citiustech.model.Patient;
 import com.citiustech.model.Physician;
+import com.citiustech.model.User;
 import com.citiustech.repo.EmployeeRepository;
 import com.citiustech.repo.PatientRepository;
 import com.citiustech.repo.PhysicianRepository;
 import com.citiustech.request.SignUpRequest;
+import com.citiustech.restcontroller.ValidateEmail;
 
 @Service
 public class RegistrationService {
@@ -73,4 +77,13 @@ public class RegistrationService {
 		
 		return "Physician registered successfully" ;
 	}
+	
+	/*
+	 * public void updatePatientWithPatientDetails(ValidateEmail email ) {
+	 * Optional<Patient> patient = patientRepository.findByEmail(email.getEmail());
+	 * if(patient.isPresent()) { Patient p = patient.get();
+	 * p.setPatientDetails(patientDetails);
+	 * 
+	 * } }
+	 */
 }

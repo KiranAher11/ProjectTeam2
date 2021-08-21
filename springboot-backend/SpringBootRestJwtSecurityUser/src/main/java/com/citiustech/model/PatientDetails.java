@@ -84,12 +84,22 @@ public class PatientDetails {
 	private Date dateOfBirth;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	//@JoinTable(name = "PatientAddress", joinColumns = @JoinColumn(name = "address_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
 	private PatientAddress patientAdress;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	//@JoinTable(name = "Kin", joinColumns = @JoinColumn(name = "kin_id"), inverseJoinColumns = @JoinColumn(name = "kin_id"))
 	private Kin kin;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	private Diagnosis diagnosis;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	private Medication medication;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	private Procedure procedure;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	private VitalSigns vitalSigns;
 	
 	public PatientDetails() {
 		
@@ -117,6 +127,17 @@ public class PatientDetails {
 		this.patientAdress = patientAddress;
 		this.kin = kin;
 	}
+
+
+	public PatientDetails(Diagnosis diagnosis, Medication medication, Procedure procedure, VitalSigns vitalSigns) {
+		super();
+		this.diagnosis = diagnosis;
+		this.medication = medication;
+		this.procedure = procedure;
+		this.vitalSigns = vitalSigns;
+	}
+	
+	
 	
     
 }
