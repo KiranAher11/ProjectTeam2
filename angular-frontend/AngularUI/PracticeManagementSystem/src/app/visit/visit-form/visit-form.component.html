@@ -1,0 +1,112 @@
+
+<mat-horizontal-stepper #stepper>
+  <form style="text-align:center;"  #patientDetails = "ngForm" name="multistep" [formGroup]="multistep">
+    
+      <mat-step [stepControl]="firstFormGroup">
+  
+    
+      <div formGroupName="vitalSigns">
+      <ng-template matStepLabel>Visit Signs</ng-template>
+      
+      <mat-form-field class="vitals" >
+        <mat-label>Height(In cms)</mat-label>
+        <input matInput formControlName="height">
+    </mat-form-field><br>
+    <mat-form-field class="weight">  
+      <mat-label>Weight(In kgs)</mat-label>
+      <input matInput formControlName="weight">
+  </mat-form-field>&nbsp;&nbsp;
+  <mat-form-field class="blood">
+    <mat-label>Blood Pressure(In mmHg)</mat-label>
+    <input matInput formControlName="bloodPressure">
+</mat-form-field><br>
+<mat-form-field class="body">
+  <mat-label>Body Temperature(In celsius)</mat-label>
+  <input matInput formControlName="bodyTemp">
+</mat-form-field>&nbsp;&nbsp;
+<mat-form-field class="respiration">
+  <mat-label>Respiration Rate(In BPM)</mat-label>
+  <input matInput  formControlName="respiratinRate">
+</mat-form-field>
+ 
+      <div>
+        <button mat-flat-button color="primary" matStepperNext>Next</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <div formGroupName="diagnosis">
+      <ng-template matStepLabel>Diagnosis</ng-template>
+      <mat-form-field>
+        <mat-label class="b">Diagnosis:</mat-label>
+        <mat-select formControlName="diagnosisDescription" >
+        <mat-option ></mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <mat-form-field>
+      <mat-label>Diagnosis_Description</mat-label>
+      <textarea matInput formControlName="diagnosisText"></textarea>
+  </mat-form-field>&nbsp;&nbsp;
+      
+      <div>
+        <button mat-flat-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;
+        <button  mat-flat-button color="primary" matStepperNext>Next</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <div formGroupName="medication">
+      <ng-template matStepLabel>Medication</ng-template>
+      <mat-form-field>
+        <mat-label class="b">Medication:</mat-label>
+        <mat-select formControlName="drugName">
+            <mat-option ></mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <mat-form-field class="descrip">
+      <mat-label>Medication_Description</mat-label>
+      <textarea matInput formControlName="medicationText"></textarea>
+  </mat-form-field>&nbsp;&nbsp;
+      <div>
+        <button mat-flat-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;
+        <button mat-flat-button color="primary" matStepperNext>Next</button>
+      </div>
+    </div>
+  </mat-step>
+    <mat-step [stepControl]="fourthFormGroup">
+    <div formGroupName="procedure">
+      <ng-template matStepLabel>Procedures</ng-template>
+      
+      <mat-form-field>
+        <mat-label class="b">Procedure:</mat-label>
+        <mat-select formControlName="ProcedureType">
+            <mat-option ></mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <mat-form-field class="descrip">
+      <mat-label>Procedure_Description</mat-label>
+      <textarea matInput formControlName="procedureText"></textarea>
+  </mat-form-field>
+      <div>
+        <button mat-flat-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;
+        <button mat-flat-button color="primary" matStepperNext>Next</button>
+      </div>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-flat-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;
+      <button mat-flat-button color="primary" (click)="stepper.reset()">Reset</button>&nbsp;&nbsp;
+
+      <button mat-flat-button color="primary" (click)="doPatient(patientDetails.value)">Submit</button>
+    </div>
+  </mat-step>
+</form>
+
+
+ 
+
+</mat-horizontal-stepper>

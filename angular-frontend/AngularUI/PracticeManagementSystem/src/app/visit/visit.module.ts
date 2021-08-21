@@ -9,10 +9,11 @@ import { SharedMaterialModule } from '../shared/shared-material/shared-material.
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
+import { VisitFormComponent } from './visit-form/visit-form.component';
 // import { VitalSignsComponent } from './vital-signs/vital-signs.component';
 
 @NgModule({
-  declarations: [AppointmentFormComponent],
+  declarations: [AppointmentFormComponent, VisitFormComponent],
   imports: [
     CommonModule,
     VisitRoutingModule,
