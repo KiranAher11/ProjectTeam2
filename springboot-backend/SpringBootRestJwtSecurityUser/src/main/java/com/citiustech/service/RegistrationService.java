@@ -1,20 +1,16 @@
 package com.citiustech.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.citiustech.model.Employee;
+import com.citiustech.model.Nurse;
 import com.citiustech.model.Patient;
 import com.citiustech.model.Physician;
-import com.citiustech.model.User;
-import com.citiustech.repo.EmployeeRepository;
+import com.citiustech.repo.NurseRepository;
 import com.citiustech.repo.PatientRepository;
 import com.citiustech.repo.PhysicianRepository;
 import com.citiustech.request.SignUpRequest;
-import com.citiustech.restcontroller.ValidateEmail;
 
 @Service
 public class RegistrationService {
@@ -23,7 +19,7 @@ public class RegistrationService {
 	private PatientRepository patientRepository;
 		
 	@Autowired
-	private EmployeeRepository employeeRepository;
+	private NurseRepository nurseRepository;
 	
 	@Autowired
 	private PhysicianRepository physicianRepository;
@@ -48,16 +44,16 @@ public class RegistrationService {
 	}
 	
 	public String  registeredTheEmployee(SignUpRequest signupRequest) {
-		Employee employee = new Employee(
+		Nurse nurse = new Nurse(
 				signupRequest.getEmail(),
-				encoder.encode(signupRequest.getPassword()),
+				//encoder.encode(signupRequest.getPassword()),
 				signupRequest.getFirstName(),
 				signupRequest.getLastName(),
 				signupRequest.getContactNumber() ,
 				signupRequest.getGender(),
 				signupRequest.getDateOfBirth());
 		
-		employeeRepository.save(employee);
+		nurseRepository.save(nurse);
 		
 		return "Employee registered successfully" ;
 	}
