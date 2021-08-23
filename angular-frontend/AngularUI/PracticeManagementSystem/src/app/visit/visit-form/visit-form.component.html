@@ -1,4 +1,4 @@
-
+<h4 >{{result}}</h4>
 <mat-horizontal-stepper #stepper>
   <form style="text-align:center;"  #patientVisit = "ngForm" name="multistep" [formGroup]="multistep">
     
@@ -51,9 +51,9 @@
       <mat-label>Diagnosis_Description</mat-label>
       <textarea matInput formControlName="diagnosisText" [matAutocomplete]="auto"></textarea>
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option}}
-        </mat-option>
+        <!-- <mat-option *ngFor="let keyword of filteredOptions | async" [value]="keyword">
+          {{keyword}}
+        </mat-option> -->
       </mat-autocomplete>
   </mat-form-field>&nbsp;&nbsp;
       
@@ -110,6 +110,22 @@
       </div>
     </div>
   </mat-step>
+
+  <mat-step [stepControl]="fifthFormGroup">
+    <div formGroupName="email">
+      <ng-template matStepLabel>Patient Email</ng-template>
+      
+    <mat-form-field class="descrip">
+      <mat-label>Procedure_Description</mat-label>
+      <input matInput formControlName="email">
+  </mat-form-field>
+      <div>
+        <button mat-flat-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;
+        <button mat-flat-button color="primary" matStepperNext>Next</button>
+      </div>
+    </div>
+  </mat-step>
+
 
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>

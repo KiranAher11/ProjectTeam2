@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.citiustech.model.Diagnosis;
 import com.citiustech.model.Medication;
@@ -16,6 +17,7 @@ import com.citiustech.repo.PatientDetailsRepository;
 import com.citiustech.repo.PatientRepository;
 import com.citiustech.response.MessageResponse;
 
+@Service
 public class PatientVisitService {
 
 	@Autowired
@@ -45,6 +47,7 @@ public class PatientVisitService {
 		
 			
 		Optional<PatientDetails> pd = repo.findByEmail(patientVisitData.getEmail());
+
 		
 		if(pd.isPresent()) {
 			
@@ -54,8 +57,9 @@ public class PatientVisitService {
 			pd1.setProcedure(procedure);
 			pd1.setVitalSigns(vitalSigns);
 			repo.save(pd1);
-			
+		
 			Optional<Patient> p =  patientRepository.findByEmail(patientVisitData.getEmail());
+
 			Patient p1 = p.get();
 			p1.setPatientDetails(pd1);
 			patientRepository.save(p1);

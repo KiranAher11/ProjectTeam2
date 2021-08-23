@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +28,7 @@ import com.citiustech.repo.DiagnosisAutoCompleteRepository;
 import com.citiustech.repo.MedicationSearchRepository;
 import com.citiustech.repo.ProcedureSearchRepository;
 import com.citiustech.response.MessageResponse;
+import com.citiustech.service.PatientVisitService;
 
 @RestController
 @RequestMapping("/visit")
@@ -34,6 +36,9 @@ public class PatientVisitController {
 	
 	@Autowired
 	private DiagnosisAutoCompleteRepository dar;
+	
+	@Autowired
+	PatientVisitService patientVisitService;
 	
 	@Autowired
 	private MedicationSearchRepository msr;
@@ -46,25 +51,10 @@ public class PatientVisitController {
 		
 		System.out.println(patientVisitData.getVitalSigns().getBloodPressure());
 	    System.out.println(patientVisitData.toString());
-		
-		VitalSigns vitalSigns = new VitalSigns(patientVisitData.getVitalSigns().getHeight(), 
-				patientVisitData.getVitalSigns().getWeight(),
-				patientVisitData.getVitalSigns().getBloodPressure(), 
-				patientVisitData.getVitalSigns().getBodyTemp(),
-				patientVisitData.getVitalSigns().getRespiratinRate());
-		
-		Diagnosis diagnosis = new Diagnosis(patientVisitData.getDiagnosis().getDiagnosisDescription(), 
-				patientVisitData.getDiagnosis().getDiagnosisText());
-		
-		Medication medication = new Medication(patientVisitData.getMedication().getDrugName(), 
-				patientVisitData.getMedication().getMedicationText());
-		
-		Procedure procedure = new Procedure(patientVisitData.getProcedure().getProcedureType(), 
-				patientVisitData.getProcedure().getProcedureText());
-		
-		//patientDetailsRepository.save(details)
-		
-		return ResponseEntity.ok(new MessageResponse("PatientVisit Saved Successfully!"));
+	    
+	    patientVisitService.savePatientDetailsAndPatient(patientVisitData);
+	    
+	    return ResponseEntity.ok(new MessageResponse("PatientVisit Saved Successfully!"));
 				
 	}
 	
