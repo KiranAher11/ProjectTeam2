@@ -44,7 +44,7 @@ public class PatientVisitService {
 				patientVisitData.getProcedure().getProcedureText());
 		
 			
-		Optional<PatientDetails> pd = repo.findByEmail("email");
+		Optional<PatientDetails> pd = repo.findByEmail(patientVisitData.getEmail());
 		
 		if(pd.isPresent()) {
 			
@@ -55,7 +55,7 @@ public class PatientVisitService {
 			pd1.setVitalSigns(vitalSigns);
 			repo.save(pd1);
 			
-			Optional<Patient> p =  patientRepository.findByEmail("email");
+			Optional<Patient> p =  patientRepository.findByEmail(patientVisitData.getEmail());
 			Patient p1 = p.get();
 			p1.setPatientDetails(pd1);
 			patientRepository.save(p1);

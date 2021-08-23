@@ -15,5 +15,7 @@ public class PatientVisitData {
 	private Medication medication;
 	
 	private  Procedure procedure;
+	
+	private String email;
 
 }
