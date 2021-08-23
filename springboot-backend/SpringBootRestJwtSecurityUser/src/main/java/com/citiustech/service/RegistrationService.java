@@ -74,12 +74,4 @@ public class RegistrationService {
 		return "Physician registered successfully" ;
 	}
 	
-	/*
-	 * public void updatePatientWithPatientDetails(ValidateEmail email ) {
-	 * Optional<Patient> patient = patientRepository.findByEmail(email.getEmail());
-	 * if(patient.isPresent()) { Patient p = patient.get();
-	 * p.setPatientDetails(patientDetails);
-	 * 
-	 * } }
-	 */
 }
