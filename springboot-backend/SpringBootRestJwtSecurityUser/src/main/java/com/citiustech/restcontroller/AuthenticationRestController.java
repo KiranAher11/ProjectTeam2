@@ -157,9 +157,9 @@ public class AuthenticationRestController {
 				break;
 			case "ROLE_PHYSICIAN" : response = registrationService.registeredThePhysician(signupRequest);
 				break;
-			case "ROLE_NURSE" : response = registrationService.registeredTheEmployee(signupRequest);
+			case "ROLE_NURSE" : response = registrationService.registereTheNurse(signupRequest);
 				break;
-			case "ROLE_ADMIN" : response = registrationService.registeredTheEmployee(signupRequest);
+			case "ROLE_ADMIN" : response = registrationService.registereTheAdmin(signupRequest);
 				break;
 				
 		}
