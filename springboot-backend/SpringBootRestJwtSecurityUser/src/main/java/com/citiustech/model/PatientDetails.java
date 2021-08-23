@@ -135,9 +135,5 @@ public class PatientDetails {
 		this.medication = medication;
 		this.procedure = procedure;
 		this.vitalSigns = vitalSigns;
-	}
-	
-	
-	
-    
+	} 
 }

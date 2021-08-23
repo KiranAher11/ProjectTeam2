@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-
-
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-visit-form',
@@ -14,6 +12,10 @@ import { Observable } from 'rxjs';
 })
 export class VisitFormComponent implements OnInit{
   step:any = 1;
+
+  diagnosisDescription = new FormControl();
+  keyword: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: any;
  
   
   constructor(private fb: FormBuilder,private http: HttpClient ) {}
@@ -57,15 +59,24 @@ export class VisitFormComponent implements OnInit{
   
   ngOnInit():void {
 
+    this.filteredOptions = this.diagnosisDescription.valueChanges
+    .pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+
   }
 
-    doPatient(data:any){
+  doPatientVisit(data:any){
     console.log(data);
-      return this.http.post("http://localhost:9900/api/authh/patientVisit",data,{responseType: 'text' as 'json'}).subscribe((result)=>{
+      return this.http.post("http://localhost:9900/api/visit/patientVisit",data,{responseType: 'text' as 'json'}).subscribe((result)=>{
       console.log("Result",result);
-}) 
+  }) 
+}
+ 
+private _filter(value: string): string[] {
+  const filterValue = value.toLowerCase();
 
-   }
-
-   
+  return this.keyword.filter(option => option.toLowerCase().includes(filterValue));
+}
 }
