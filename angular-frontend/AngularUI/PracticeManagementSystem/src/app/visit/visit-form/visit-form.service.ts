@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+//import { HttpClient,HttpResponse } from '@angular/http'; 
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+//import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +12,14 @@ import { AuthService } from 'src/app/services/auth.service';
 export class VisitFormService {
 
   authUserObj: any;
+
+  BASE_URL:string = 'http://localhost:9900/api/visit/'
  
 
   constructor(private http: HttpClient,private authSrc:AuthService) { }
 
-  getPatientDetails(patientData:any):any{
-    console.log('patient Details');
-    console.log(patientData);
-
-    return this.http.get("http://localhost:9900/api/aut/usermanagement/patient_details",patientData);
-
+  search(keyword:any):any{
+    return this.http.get(this.BASE_URL + 'search/', keyword);
   }
 
 }

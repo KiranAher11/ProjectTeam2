@@ -1,6 +1,6 @@
 
 <mat-horizontal-stepper #stepper>
-  <form style="text-align:center;"  #patientDetails = "ngForm" name="multistep" [formGroup]="multistep">
+  <form style="text-align:center;"  #patientVisit = "ngForm" name="multistep" [formGroup]="multistep">
     
       <mat-step [stepControl]="firstFormGroup">
   
@@ -39,13 +39,22 @@
       <ng-template matStepLabel>Diagnosis</ng-template>
       <mat-form-field>
         <mat-label class="b">Diagnosis:</mat-label>
-        <mat-select formControlName="diagnosisDescription" >
+        <mat-select formControlName="diagnosisDescription">
+          <mat-option value="Diagnosis1">Diagnosis1</mat-option>
+          <mat-option value="Diagnosis2">Diagnosis2</mat-option>
+          <mat-option value="Diagnosis3">Diagnosis3</mat-option>
+          <mat-option value="Diagnosis4">Diagnosis4</mat-option>
         <mat-option ></mat-option>
         </mat-select>
     </mat-form-field><br>
     <mat-form-field>
       <mat-label>Diagnosis_Description</mat-label>
-      <textarea matInput formControlName="diagnosisText"></textarea>
+      <textarea matInput formControlName="diagnosisText" [matAutocomplete]="auto"></textarea>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
   </mat-form-field>&nbsp;&nbsp;
       
       <div>
@@ -60,6 +69,10 @@
       <mat-form-field>
         <mat-label class="b">Medication:</mat-label>
         <mat-select formControlName="drugName">
+          <mat-option value="Medication1">Medication1</mat-option>
+          <mat-option value="Medication2">Medication2</mat-option>
+          <mat-option value="Medication3">Medication3</mat-option>
+          <mat-option value="Medication4">Medication4</mat-option>
             <mat-option ></mat-option>
         </mat-select>
     </mat-form-field><br>
@@ -80,6 +93,10 @@
       <mat-form-field>
         <mat-label class="b">Procedure:</mat-label>
         <mat-select formControlName="ProcedureType">
+          <mat-option value="Procedure1">Procedure1</mat-option>
+          <mat-option value="Procedure2">Procedure2</mat-option>
+          <mat-option value="Procedure3">Procedure3</mat-option>
+          <mat-option value="Procedure4">Procedure4</mat-option>
             <mat-option ></mat-option>
         </mat-select>
     </mat-form-field><br>
@@ -101,12 +118,8 @@
       <button mat-flat-button color="primary" matStepperPrevious>Back</button>&nbsp;&nbsp;
       <button mat-flat-button color="primary" (click)="stepper.reset()">Reset</button>&nbsp;&nbsp;
 
-      <button mat-flat-button color="primary" (click)="doPatient(patientDetails.value)">Submit</button>
+      <button mat-flat-button color="primary" (click)="doPatientVisit(patientVisit.value)">Submit</button>
     </div>
   </mat-step>
 </form>
-
-
- 
-
 </mat-horizontal-stepper>
