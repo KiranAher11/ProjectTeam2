@@ -3,29 +3,55 @@
 <mat-card>
    <h4>Schedule Appointment</h4>
 
-        <form class="example-form">
+        <form class="example-form" [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" >
             <mat-card-content>
                 <br>
                 <mat-form-field class="example-full-width">
                     <mat-label>Appointment Title</mat-label>
-                    <input matInput placeholder="Appointment Title" >
-                </mat-form-field>
+                    <input matInput placeholder="Appointment Title" formControlName="appointmentTitle"   class="form-control">
+                    <mat-error *ngIf="appointmentForm.controls['appointmentTitle'].hasError('required')">
+                       Appointment Title is required
+                    </mat-error> 
+                </mat-form-field><br>
 
-                <mat-form-field class="example-full-width">
+                <!-- <mat-form-field class="example-full-width">
                     <mat-label>Select Physician</mat-label>
                     <mat-select>
                         <mat-option></mat-option>
                     </mat-select>
-                </mat-form-field>
+                </mat-form-field> -->
 
-                <div fxLayout="row">
-                    <mat-form-field class="dob">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Select Physician</mat-label>
+                      <select matNativeControl required formControlName="physician"   class="form-control" >
+                        <option value="James">James</option>
+                        <option value="Alex">Alex</option>
+                        <option value="John">John</option>
+                      </select>
+                        
+                       <mat-error *ngIf="appointmentForm.controls['physician'].hasError('required')">
+                           Physician is required
+                       </mat-error> 
+                   </mat-form-field>
+
+                
+                    <!-- <mat-form-field class="dob">
                         <mat-label>Appointment Date</mat-label>
                         <input matInput  placeholder="Choose a date">
                         <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
                         <mat-datepicker></mat-datepicker>
-                    </mat-form-field>
-
+                    </mat-form-field> -->
+                    <div fxLayout="row">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Appointment Date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="appointmentDate"   [max]="maxDate"  >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="appointmentForm.controls['appointmentDate'].hasError('required')">
+                          Appointment Date is required
+                         </mat-error>
+                        </mat-form-field>
+                    </div>
                     <!-- <mat-form-field class="time" >
                         <mat-label>Select time</mat-label>
                         <input matInput>
@@ -40,22 +66,28 @@
                         <input matInput [(ngModel)]="this.endtime" (click)="getEndTime()">
                       </mat-form-field> -->
  <!--Appointment Time Control-->
- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-    <mat-form-field class="time" >
+ <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">  -->
+      <div fxLayout="row"> 
+    <mat-form-field class="example-full-width" >
       <mat-label>Appointment Time</mat-label>
-      <mat-icon matSuffix>access_time</mat-icon>
-      <!-- <input #pickerInput type="text"> -->
+     <input matInput placeholder="Appointment Time" formControlName="appointmentTime"   class="form-control">
+        <mat-error *ngIf="appointmentForm.controls['appointmentTitle'].hasError('required')">
+           Appointment Time is required
+        </mat-error> 
+    </mat-form-field>
+      <!-- <mat-icon matSuffix>access_time</mat-icon>
+      <input #pickerInput type="text"> 
       <input matInput type="text"  aria-live="assertive">
       <mat-error>
         <span >
           Please Select Appointment Time !
         </span>
       </mat-error>
-    </mat-form-field>
+    </mat-form-field>  -->
   </div>
 <!--Appointment Time Control Ends -->
 
-                </div>
+                 
                 <!-- <mat-form-field>
                     <input matInput type="datetime-local" placeholder="start date">
                 </mat-form-field> -->
@@ -72,7 +104,10 @@
 
                     <mat-form-field class="example-full-width">
                         <mat-label>Meeting Description</mat-label>
-                        <textarea matInput></textarea>
+                        <textarea matInput formControlName="appointmentTime"   class="form-control"></textarea>
+                        <mat-error *ngIf="appointmentForm.controls['meetingDescription'].hasError('required')">
+                            Meeting Description
+                         </mat-error> 
                     </mat-form-field>
                 
                 <br>

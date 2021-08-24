@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
   invalidLogin = false;
   loginSuccess = false;
   hide: boolean=true;
+  loginDetails: any;
+  dummyLoginVar:any
   
 
   constructor(private router:Router,
@@ -46,8 +48,10 @@ export class LoginComponent implements OnInit {
     { 
       responseType: 'text' as 'json'}).subscribe(
         (data) => {
-        //this.tokenStorage.saveUser(data);
-        console.log(data)
+          console.log(data)
+        this.tokenStorage.saveUser(data);
+        this.dummyLoginVar = data;
+        this.loginDetails = JSON.parse(this.dummyLoginVar);
         
         // if(data.roles=='nurse' || data.role == 'physician') {
         //   this.router.navigate(['/core/inbox/sharedinbox']);
