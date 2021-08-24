@@ -41,7 +41,14 @@
 
 .main-wrapper .example-full-width,
 .main-wrapper .btn-block {
-	width: 100%;
+	width: 30%;
+	display: block;
+    border: none;
+    background-color: #047baa;
+    padding: 14px 28px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .main-wrapper mat-card-header {

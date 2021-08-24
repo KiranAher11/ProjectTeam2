@@ -74,9 +74,12 @@ public class Patient {
 		this.dateOfBirth = dateOfBirth;
 		
 	}
+<<<<<<< Updated upstream
 	
 	
 	
+=======
+>>>>>>> Stashed changes
 	public Patient() {
 		
 	}

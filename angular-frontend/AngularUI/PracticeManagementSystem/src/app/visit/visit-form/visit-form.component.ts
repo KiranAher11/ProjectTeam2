@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { VisitFormService } from './visit-form.service';
 
 @Component({
   selector: 'app-visit-form',
@@ -12,13 +13,14 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class VisitFormComponent implements OnInit{
   step:any = 1;
+  result:any=null;
 
   diagnosisDescription = new FormControl();
-  keyword: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: any;
+  keyword: any;
+  filteredOptions!: any[];
  
   
-  constructor(private fb: FormBuilder,private http: HttpClient ) {}
+  constructor(private fb: FormBuilder,private http: HttpClient,private VisitService: VisitFormService) {}
 
   multistep = new FormGroup({
     vitalSigns : new FormGroup({
@@ -39,6 +41,9 @@ export class VisitFormComponent implements OnInit{
      procedure : new FormGroup({
       ProcedureType : new FormControl(''),
       procedureText : new FormControl('')
+     }),
+      email : new FormGroup({
+      email : new FormControl('')
      })
   })
 
@@ -56,27 +61,38 @@ export class VisitFormComponent implements OnInit{
   fourthFormGroup:FormGroup = this.fb.group({
 
   });
+  fifthFormGroup:FormGroup = this.fb.group({
+
+  });
   
   ngOnInit():void {
 
-    this.filteredOptions = this.diagnosisDescription.valueChanges
-    .pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
-
+    // this.filteredOptions = this.diagnosisDescription.valueChanges
+    // .pipe(
+    //   startWith(''),
+    //   map(value => this._filter(value))
+    // );
   }
+
+  // search(event){
+  //   this.filteredOptions = [];
+  //   this.VisitService.search(this.keyword).subscribe((res=>{
+  //     this.filteredOptions = res;
+  //   })
+      
+  //   );
+  // }
 
   doPatientVisit(data:any){
     console.log(data);
       return this.http.post("http://localhost:9900/api/visit/patientVisit",data,{responseType: 'text' as 'json'}).subscribe((result)=>{
-      console.log("Result",result);
+      console.log("result",result);
   }) 
 }
  
-private _filter(value: string): string[] {
-  const filterValue = value.toLowerCase();
+// private _filter(value: string): string[] {
+//   const filterValue = value.toLowerCase();
 
-  return this.keyword.filter(option => option.toLowerCase().includes(filterValue));
-}
+//   return this.keyword.filter((option: string) => option.toLowerCase().includes(filterValue));
+// }
 }

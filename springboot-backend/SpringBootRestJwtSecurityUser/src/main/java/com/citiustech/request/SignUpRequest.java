@@ -45,9 +45,9 @@ public class SignUpRequest {
 	@NonNull
 	private String password;
 
-	@NotBlank
+	//@NotBlank
 	@Size(max = 120)
-	@NonNull
+	//@NonNull
 	private String confirmPassword;
 	
     //private HashSet<String> role;

@@ -127,6 +127,10 @@ public class AuthenticationRestController {
 						MessageResponse("Error: EmailId Already exist"));
 		}
 		
+		if(signupRequest.getRole() != "ROLE_PATIENT") {
+			signupRequest.setPassword("password@123");
+		}
+		
 		//create user
 		User user = new User(
 				signupRequest.getEmail(),
@@ -157,9 +161,9 @@ public class AuthenticationRestController {
 				break;
 			case "ROLE_PHYSICIAN" : response = registrationService.registeredThePhysician(signupRequest);
 				break;
-			case "ROLE_NURSE" : response = registrationService.registeredTheEmployee(signupRequest);
+			case "ROLE_NURSE" : response = registrationService.registereTheNurse(signupRequest);
 				break;
-			case "ROLE_ADMIN" : response = registrationService.registeredTheEmployee(signupRequest);
+			case "ROLE_ADMIN" : response = registrationService.registereTheAdmin(signupRequest);
 				break;
 				
 		}

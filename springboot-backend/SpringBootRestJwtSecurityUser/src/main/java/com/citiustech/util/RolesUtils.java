@@ -32,8 +32,6 @@ public class RolesUtils {
 							dbRoles.add(userRole);
 							break;
 						}
-				
-				
 			}
 	}
 }
