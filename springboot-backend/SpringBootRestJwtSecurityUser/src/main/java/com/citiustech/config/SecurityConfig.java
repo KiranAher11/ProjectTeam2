@@ -61,12 +61,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		.antMatchers("/auth/**").permitAll()
 		.antMatchers("/mail/**").permitAll()
-<<<<<<< Updated upstream
 		.antMatchers("/details/**").permitAll()
 		.antMatchers("/visit/**").permitAll()
-=======
 		.antMatchers("/bookapp/**").permitAll()
->>>>>>> Stashed changes
         .antMatchers("/admin").hasAnyAuthority("ROLE_ADMIN","ROLE_PATIENT","ROLE_PHYSICIAN","ROLE_NURSE")
         .antMatchers("/patient").hasAuthority("ROLE_USER")
         .antMatchers("/nurse").hasAuthority("ROLE_NURSE")
