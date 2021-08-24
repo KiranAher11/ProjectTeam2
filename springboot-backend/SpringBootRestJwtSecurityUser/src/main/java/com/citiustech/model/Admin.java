@@ -1,5 +1,4 @@
 package com.citiustech.model;
-
 import java.util.Date;
 import java.util.Set;
 
@@ -13,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,10 +26,10 @@ import lombok.NonNull;
 
 @Data
 @Entity
-@Table(name = "patients", uniqueConstraints = {
+@Table(name = "admin", uniqueConstraints = {
                 @UniqueConstraint(columnNames = "email") })
-public class Patient {
-	
+public class Admin {
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,11 +57,11 @@ public class Patient {
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	private PatientDetails patientDetails;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "users_roles_tab", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
 
-	public Patient(@NotBlank @Size(max = 50) @Email @NonNull String email,
-			@NotBlank @Size(max = 120) @NonNull String password, @NotNull @Size(max = 25) String firstName,
+	public Admin(@NotBlank @Size(max = 50) @Email @NonNull String email, @NotNull @Size(max = 25) String firstName,
 			@Size(max = 25) String lastName, @Size(max = 15) String contactNumber, EGender gender, Date dateOfBirth) {
 		super();
 		this.email = email;
@@ -74,18 +72,4 @@ public class Patient {
 		this.dateOfBirth = dateOfBirth;
 		
 	}
-	
-	
-	
-	public Patient() {
-		
-	}
-
-
-
-	public Patient(PatientDetails patientDetails) {
-		super();
-		this.patientDetails = patientDetails;
-	}
-	
 }

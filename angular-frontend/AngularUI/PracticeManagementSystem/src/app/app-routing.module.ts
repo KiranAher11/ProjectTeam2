@@ -20,10 +20,10 @@ const routes: Routes = [
       }
     ]
   },
-   { path: 'user-registration', component: UserRegistrationComponent },
+   { path: 'userRegistration', component: UserRegistrationComponent },
    //{ path: 'home', component: NavigationComponent },
-   { path: 'forgot-password', component: ForgotPasswordComponent },
-   { path: 'change-password', component: ChangePasswordComponent },
+   { path: 'forgotPassword', component: ForgotPasswordComponent },
+   { path: 'changePassword', component: ChangePasswordComponent },
    {path: 'core', loadChildren: () => import('./core/core.module').then(c => c.CoreModule)}
 
 
