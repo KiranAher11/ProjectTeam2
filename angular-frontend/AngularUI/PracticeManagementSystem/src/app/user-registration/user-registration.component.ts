@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserRegistrationComponent implements OnInit {
 
   role = 'user';
+  
 
 
   constructor(private http: HttpClient) { }
@@ -20,6 +21,7 @@ export class UserRegistrationComponent implements OnInit {
 
   }
   hide = true;
+  
 
 onSubmit(data:any){
   console.log(data);
@@ -27,4 +29,7 @@ onSubmit(data:any){
      console.log("Result",result);
   }) 
 } 
+
+
 }
+

@@ -10,7 +10,7 @@ public class EmailDtoMapper {
 		EmailDto emailDto = new EmailDto();
 		emailDto.setPatientName("PatientName");
 		emailDto.setPatientEmail("");
-		emailDto.setPhysicianName(appointmentdetails.getPhysicianName());
+		//emailDto.setPhysicianName(appointmentdetails.getPhysicianName());
 
 		if(appointmentdetails.getStatus().equalsIgnoreCase("Active")) {
 
@@ -29,11 +29,13 @@ public class EmailDtoMapper {
 
 		EmailDto emailDto = new EmailDto();
 		
-		emailDto.setPatientName(appointmentdetails.getPatientName());
-		emailDto.setPatientEmail(appointmentdetails.getPatientEmail());
-	
-		emailDto.setPhysicianName(appointmentdetails.getPhysicianName());
-		emailDto.setPhysicianEmail(appointmentdetails.getPhysicianEmail());
+		/*
+		 * emailDto.setPatientName(appointmentdetails.getPatientName());
+		 * emailDto.setPatientEmail(appointmentdetails.getPatientEmail());
+		 * 
+		 * emailDto.setPhysicianName(appointmentdetails.getPhysicianName());
+		 * emailDto.setPhysicianEmail(appointmentdetails.getPhysicianEmail());
+		 */
 
 		
 		if(appointmentdetails.getStatus().equalsIgnoreCase("Active")) {

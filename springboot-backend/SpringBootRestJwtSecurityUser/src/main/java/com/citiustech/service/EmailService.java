@@ -7,12 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import com.citiustech.model.EmailDto;
-
-
 
 @Service
 public class EmailService {
@@ -22,8 +21,6 @@ public class EmailService {
 
 	@Autowired
 	private JavaMailSender javaMailSender;
-
-
 
 	public String sendMail(EmailDto emailDto) throws MessagingException {
 		System.out.println(emailDto);

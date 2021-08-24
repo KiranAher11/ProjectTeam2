@@ -1,7 +1,7 @@
 package com.citiustech.model;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,13 +34,13 @@ public class TimeSlot {
 	private String dayWeek;
 	
 	@Column(name = "slot_start")
-	private LocalTime slotStart;
+	private Date slotStart;
 	
 	@Column(name = "slot_end")
-	private LocalTime slotEnd;
+	private Date slotEnd;
 	
 	@Column(name = "slot_date")
-	private LocalDate slotDate;
+	private Date slotDate;
 	
 	@Column(name = "status")
 	private String status;

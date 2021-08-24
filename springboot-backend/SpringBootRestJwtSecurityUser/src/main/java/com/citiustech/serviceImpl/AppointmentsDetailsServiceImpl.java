@@ -23,12 +23,13 @@ public class AppointmentsDetailsServiceImpl implements AppinmentDetailsService {
 	@Autowired
 	private EmailService emailService;
 
-	@Override
+	@Override                                    //Long userId,
 	public AppointmentDetails bookAppointment(Long userId, AppointmentDetails appointment) throws MessagingException {
 		
-		System.out.println("###############");
+		System.out.println("in service class booking appoinmt");
 		
-		emailService.sendMail(EmailDtoMapper.appintmentToEmailDtomapper2(appointment));
+		//emailService.sendMail(EmailDtoMapper.appintmentToEmailDtomapper2(appointment));
+		
 		return appointmentdetailsRepository.save(appointment);
 	}
 	

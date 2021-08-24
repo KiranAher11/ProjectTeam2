@@ -20,7 +20,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.citiustech.filter.SecurityFilter;
-import com.citiustech.service.UserDetailsServiceImpl;
+import com.citiustech.serviceImpl.UserDetailsServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
@@ -61,8 +61,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		.antMatchers("/auth/**").permitAll()
 		.antMatchers("/mail/**").permitAll()
+<<<<<<< Updated upstream
 		.antMatchers("/details/**").permitAll()
 		.antMatchers("/visit/**").permitAll()
+=======
+		.antMatchers("/bookapp/**").permitAll()
+>>>>>>> Stashed changes
         .antMatchers("/admin").hasAnyAuthority("ROLE_ADMIN","ROLE_PATIENT","ROLE_PHYSICIAN","ROLE_NURSE")
         .antMatchers("/patient").hasAuthority("ROLE_USER")
         .antMatchers("/nurse").hasAuthority("ROLE_NURSE")

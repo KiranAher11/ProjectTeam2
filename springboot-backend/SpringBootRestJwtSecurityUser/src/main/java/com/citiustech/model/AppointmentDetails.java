@@ -29,8 +29,8 @@ public class AppointmentDetails {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "reason")
-	private String reason;
+	//@Column(name = "reason")
+	//private String reason;
 	
 	@Column(name = "status")
 	private String status;
@@ -42,25 +42,25 @@ public class AppointmentDetails {
 	@Column(name = "physician_id")
     private long physicianId;
     
-	@Column(name = "physician_email")
-    private String physicianEmail;
+	//@Column(name = "physician_email")
+    //private String physicianEmail;
 	
-	@Column(name = "physician_name")
-    private String physicianName;
+	//@Column(name = "physician_name")
+    //private String physicianName;
 	
 	//patient--
 	@Column(name = "patient_id")
     private long patientId;
 	
-	@Column(name = "patient_email")
-    private String patientEmail;
+	//@Column(name = "patient_email")
+    //private String patientEmail;
 	
-	@Column(name = "patient_name")
-    private String patientName;
+	//@Column(name = "patient_name")
+    //private String patientName;
 	
 	//The Person who is scheduling appointment
-	@Column(name ="user_id")
-	private long userId;
+	//@Column(name ="user_id")
+	//private long userId;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "slot_id")

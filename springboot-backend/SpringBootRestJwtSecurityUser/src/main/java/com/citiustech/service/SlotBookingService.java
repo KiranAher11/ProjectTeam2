@@ -9,10 +9,10 @@ import com.citiustech.model.TimeSlot;
 
 public interface SlotBookingService {
 
-	//Slot bookSlot(Long physicianId, Slot slot);
+	
 	
 		 List<TimeSlot> getAvailableSlotsBetween(DateSlot slotDate);
-		 
+		//TimeSlot bookSlot(Long physicianId, TimeSlot timeslot);
 		 List<TimeSlot> getSlotsByDate(DateSlot slotDate);
 		 
 	

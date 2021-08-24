@@ -18,7 +18,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.citiustech.model.UserDetailsImpl;
-import com.citiustech.service.UserDetailsServiceImpl;
+import com.citiustech.serviceImpl.UserDetailsServiceImpl;
 import com.citiustech.util.JwtUtils;
 
 public class SecurityFilter  extends OncePerRequestFilter{

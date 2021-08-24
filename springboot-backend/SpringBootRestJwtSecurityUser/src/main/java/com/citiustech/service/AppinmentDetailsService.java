@@ -11,8 +11,8 @@ import com.citiustech.model.AppointmentDetails;
 
 @Service
 public interface AppinmentDetailsService {
-	
-	AppointmentDetails bookAppointment(Long userId, AppointmentDetails appointment) throws MessagingException;
+	                                 //Long userId,
+	AppointmentDetails bookAppointment( Long userId,AppointmentDetails appointment) throws MessagingException;
 	
 	AppointmentDetails getAppointmentById(Long appointmentId);
 	
@@ -22,7 +22,7 @@ public interface AppinmentDetailsService {
 	
 	AppointmentDetails getAppointmentByPatientId(Long patientId);
 
-	//New One
+	//Added another New One
 	//Appointment scheduleAppointment(Long userId, AppointmentInfo appointmentInfo);
 
 }
