@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { HospitalUsersListService } from './hospital-user-list.service';
 
 
 @Component({
@@ -11,9 +12,11 @@ export class HospitalUserListComponent implements OnInit {
 
   isLoadingResults = true;
   paginatedObj: any = {};
-  displayedColumns: string[] = ['serialNumber','userId','title', 'firstName', 'lastName', 'emailId', 'contactNumber', 'dob', 'gender', 'address','action'];
+  displayedColumns: string[] = ['id','title', 'firstName', 'lastName', 'emailId', 'contactNumber', 'dob', 'gender', 'address','action'];
   title = 'profileData';
   status:any;
+
+  userDetails:any;
   
  // public patientTableData: Array<any> = [];
   dataSource = new MatTableDataSource();
@@ -23,7 +26,10 @@ export class HospitalUserListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor() {}
+  constructor(private hospitalUsersListService:HospitalUsersListService) {
+
+      this.getUsers();
+  }
 
   // @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   // @ViewChild(MatSort, { static: true }) sort!: MatSort;
@@ -43,5 +49,17 @@ export class HospitalUserListComponent implements OnInit {
     //  .map((i, idx) => (i.position = (idx + 1), i));
     this.ngOnInit();
     
+  }
+
+  getUsers(){
+    this.hospitalUsersListService.getUsers().subscribe(
+      (resp)=>{
+        console.log(resp);
+        this.userDetails = resp;
+      },
+      (err)=>{
+        console.log(err);
+      }
+    );
   }
 }

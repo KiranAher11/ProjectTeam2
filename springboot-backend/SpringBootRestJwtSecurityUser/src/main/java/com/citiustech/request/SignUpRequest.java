@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.citiustech.model.EGender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.NonNull;
@@ -43,6 +44,7 @@ public class SignUpRequest {
 	@NotBlank
 	@Size(max = 120)
 	@NonNull
+	@JsonIgnore
 	private String password;
 
 	//@NotBlank

@@ -1,7 +1,14 @@
 package com.citiustech.restcontroller;
 
+import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +19,11 @@ import com.citiustech.model.PatientAddress;
 import com.citiustech.model.PatientAllergy;
 import com.citiustech.model.PatientDetails;
 import com.citiustech.model.PatientDetailsData;
+import com.citiustech.model.User;
 import com.citiustech.repo.KinRepository;
 import com.citiustech.repo.PatientAddressRepository;
 import com.citiustech.repo.PatientDetailsRepository;
+import com.citiustech.repo.UserRepository;
 import com.citiustech.response.MessageResponse;
 
 //@CrossOrigin(origins = "*", maxAge = 3600)
@@ -30,6 +39,9 @@ public class PatientDetailsController {
 	
 	@Autowired
 	private KinRepository kinRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	// patientDetails
 
@@ -83,7 +95,15 @@ public class PatientDetailsController {
 	  
 	  patientDetailsRepository.save(details); return ResponseEntity.ok(new
 	  MessageResponse("Patient Details Saved Successfully!"));
-	  
 	  }
-
+	
+	@GetMapping("/getPatientList")
+	public List<PatientDetails> getPatientList(){
+		return patientDetailsRepository.findAll();
+	}
+	
+	@GetMapping("/getHospitalList")
+	public List<User> getUserList(){
+		return userRepository.findAll();
+	}
 }

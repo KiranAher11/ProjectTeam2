@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { CommonUsersListService } from './common-users-list.service';
 
 
 
@@ -32,9 +33,12 @@ export interface PetientTableElement {
 export class CommonUsersListComponent implements OnInit {
   isLoadingResults = true;
   paginatedObj: any = {};
-  displayedColumns: string[] = ['serialNumber','patientId','title', 'firstName', 'lastName', 'emailId', 'contactNumber', 'dob', 'age', 'gender', 'address','action'];
+  displayedColumns: string[] = ['id','title', 'firstName', 'lastName', 'emailId', 'contactNumber', 'dob', 'age', 'gender', 'address','action'];
   title = 'profileData';
   status:any;
+
+  patientDetails: any;
+
   
 
  // public patientTableData: Array<any> = [];
@@ -46,8 +50,9 @@ export class CommonUsersListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor() {
-
+  constructor(private commonUsersListService:CommonUsersListService) {
+ 
+     this.getPatient();
   }
   // @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   // @ViewChild(MatSort, { static: true }) sort!: MatSort;
@@ -67,6 +72,18 @@ export class CommonUsersListComponent implements OnInit {
     //  .map((i, idx) => (i.position = (idx + 1), i));
     this.ngOnInit();
     
+  }
+
+  getPatient(){
+    this.commonUsersListService.getPatients().subscribe(
+      (resp)=>{
+        console.log(resp);
+        this.patientDetails = resp;
+      },
+      (err)=>{
+        console.log(err);
+      }
+    );
   }
 
 }
