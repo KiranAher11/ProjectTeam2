@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MimeTypeUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -49,12 +50,12 @@ public class PatientVisitController {
 	@PostMapping("/patientVisit")
 	public ResponseEntity<?> createUser(@RequestBody(required=true) @Autowired(required=true)PatientVisitData patientVisitData){
 		
-		System.out.println(patientVisitData.getVitalSigns().getBloodPressure());
-	    System.out.println(patientVisitData.toString());
+		//System.out.println(patientVisitData.getVitalSigns().getBloodPressure());
+	    //System.out.println(patientVisitData.toString());
 	    
-	    patientVisitService.savePatientDetailsAndPatient(patientVisitData);
+	    ResponseEntity<MessageResponse> response = patientVisitService.savePatientDetailsAndPatient(patientVisitData);
 	    
-	    return ResponseEntity.ok(new MessageResponse("PatientVisit Saved Successfully!"));
+	    return ResponseEntity.ok(response.getBody());
 				
 	}
 	
@@ -68,6 +69,22 @@ public class PatientVisitController {
 			return new ResponseEntity<List<String>>(HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@GetMapping("/all_diagnosis")
+	public List<Diagnosis> getAllDiagnosis(){
+		return patientVisitService.getListOfAllDiagnosis();
+	}
+	
+	@GetMapping("/all_medication")
+	public List<Medication> getAllMedication(){
+		return patientVisitService.getListOfAllMedication();
+	}
+	
+	@GetMapping("/all_procedure")
+	public List<Procedure> getAllProcedure(){
+		return patientVisitService.getListOfAllProcedure();
+	}
+	
 	
 	@RequestMapping(value="searchMedication/{keyword1}",method=RequestMethod.GET,produces = {MimeTypeUtils.APPLICATION_JSON_VALUE})
 	public ResponseEntity<List<String>> searchMedication(@PathVariable("keyword1") String keyword1){
