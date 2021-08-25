@@ -1,4 +1,4 @@
-package com.citiustech.service;
+package com.citiustech.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.citiustech.model.User;
 import com.citiustech.model.UserDetailsImpl;
 import com.citiustech.repo.UserRepository;
+
+
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

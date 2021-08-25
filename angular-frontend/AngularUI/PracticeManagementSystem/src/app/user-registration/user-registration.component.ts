@@ -20,6 +20,7 @@ export class UserRegistrationComponent implements OnInit {
 
   }
   hide = true;
+  
 
 onSubmit(data:any){
   console.log(data);
@@ -27,4 +28,7 @@ onSubmit(data:any){
      console.log("Result",result);
   }) 
 } 
+
+
 }
+

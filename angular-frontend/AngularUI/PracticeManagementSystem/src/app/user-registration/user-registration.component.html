@@ -47,6 +47,8 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
+
+              
  
              <mat-form-field class="width-100">
                 <mat-label>Enter password</mat-label>
@@ -54,15 +56,21 @@
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
+              <!----  <mat-error *ngIf="!loginForm.controls['password'].valid">
+                  Password is required
+              </mat-error>--->
+                
               </mat-form-field>
               <br>
- 
               <mat-form-field class="width-100">
                 <mat-label>Enter Confirm password</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" name ="confirmPassword" ngModel>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
+                <!----<mat-error *ngIf="!loginForm.controls['password'].valid">
+                 confirmPassword is required
+              </mat-error>--->
               </mat-form-field>
               <br>
 
@@ -71,11 +79,14 @@
                 <mat-select [(value)]="role" name ="role" ngModel>
                   <mat-option value = "ROLE_PATIENT">Patient</mat-option>
                 </mat-select>
+
+                
+
+
               </mat-form-field>
- 
             </div>
       <button type="submit" mat-raised-button color="primary" class="btn-block">Register</button>
- 
+      <div class = "button-row" style="text-align:center"></div>
     </form>
   </mat-card>
 </div>

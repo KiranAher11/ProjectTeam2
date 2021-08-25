@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.citiustech.model.EGender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.NonNull;
@@ -40,20 +41,18 @@ public class SignUpRequest {
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 
-	@NotBlank
-	@Size(max = 120)
-	@NonNull
 	private String password;
 
-	@NotBlank
-	@Size(max = 120)
-	@NonNull
 	private String confirmPassword;
 	
-    //private HashSet<String> role;
-	
-	private String role;
+    private String role;
 	
 	private String specialization;
+
+	public SignUpRequest() {
+		
+	}
+	
+	
 
 }
