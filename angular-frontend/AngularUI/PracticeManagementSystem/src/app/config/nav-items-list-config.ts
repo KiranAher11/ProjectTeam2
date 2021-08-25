@@ -23,5 +23,8 @@ export const NAV_ITEMS_LIST = [
     },
     {
         permitTo: ['ROLE_PHYSICIAN'], icon: 'event_note', navItem: 'Appointment Details', route: 'schedule/appointmentDetails'
-    }
+    },
+    {
+        permitTo: ['ROLE_PHYSICIAN'], icon: 'calendar_today', navItem: 'Calender', route: 'usermanagement/calender'
+    },
 ];

@@ -4,6 +4,8 @@ import { ProfileComponent } from './profile/profile.component';
 import {EditProfileComponent} from './edit-profile/edit-profile.component';
 import {PatientDetailsComponent} from '../usermangment/patient-details/patient-details.component';
 import { HospitalUserEditProfileComponent } from './hospital-user-edit-profile/hospital-user-edit-profile.component';
+import { CalenderComponent } from './calender/calender.component';
+import { MonthService, WeekService } from '@syncfusion/ej2-angular-schedule';
 
 const routes: Routes = [
   {
@@ -22,6 +24,10 @@ const routes: Routes = [
   {
     path: 'hospital_user_edit_profile',
     component: HospitalUserEditProfileComponent
+  },
+  {
+    path: 'calender',
+    component: CalenderComponent
   }
 ];
 
