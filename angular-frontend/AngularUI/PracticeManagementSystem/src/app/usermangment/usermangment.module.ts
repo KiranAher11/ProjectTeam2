@@ -34,11 +34,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { CalenderComponent } from './calender/calender.component';
+import { MonthService, ScheduleModule, WeekService } from '@syncfusion/ej2-angular-schedule';
 
 
 @NgModule({
   declarations: [ProfileComponent,EditProfileComponent,PatientDetailsComponent, 
-    HospitalUserEditProfileComponent],
+    HospitalUserEditProfileComponent, CalenderComponent],
   imports: [
     CommonModule,
     UsermangmentRoutingModule,
@@ -46,17 +48,14 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ScheduleModule 
   ],
   exports: [
     SharedMaterialModule
     
   ],
-  
-
-
-
-
+  providers: [WeekService, MonthService],
 
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserRegistrationComponent implements OnInit {
 
-  role = 'user';
+  role = 'ROLE_PATIENT';
 
 
   constructor(private http: HttpClient) { }

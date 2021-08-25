@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { TokenStorageService } from '../services/token-storage.service';
 import { AuthService } from '../services/auth.service';
 import { LOGIN_URL } from '../config/URL.config';
-// import { SnackbarAlertService } from '../services/snackbar-alert.service';
+import { SnackbarAlertService } from '../services/snackbar-alert.service';
+import { isThisHour } from 'date-fns';
 
 @Component({
   selector: 'app-login',
@@ -22,14 +23,15 @@ export class LoginComponent implements OnInit {
   invalidLogin = false;
   loginSuccess = false;
   hide: boolean=true;
-  
+  loginDetails: any;
+  dummyLoginVar:any
 
   constructor(private router:Router,
     private tokenStorage: TokenStorageService, 
     //  private alert: SnackbarAlertService,
     private http: HttpClient,
     private fb: FormBuilder,
-    private authService: AuthService ) {}
+    private authService: AuthService) {}
 
   ngOnInit(){}
 
@@ -45,25 +47,32 @@ export class LoginComponent implements OnInit {
     return this.http.post(LOGIN_URL,data,
     { 
       responseType: 'text' as 'json'}).subscribe(
-        (data) => {
-        //this.tokenStorage.saveUser(data);
+      (data) => {
         console.log(data)
-        
-        // if(data.roles=='nurse' || data.role == 'physician') {
-        //   this.router.navigate(['/core/inbox/sharedinbox']);
-        // } else if (data.role== 'admin'){
-        //   this.router.navigate(['/core/admin/hospitalUserList']);
-        // } 
-        // if (data.roles == 'ROLE_PATIENT') {
-          console.log("11111111111111111");
-          this.router.navigate(['/core']);
-         //}
-        
-      },
-      err => {
-        // this.alert.openSnackBar(err.error.message, '', 3000);
-        console.log(err);
-      });
+        this.dummyLoginVar = data;
+        this.loginDetails = JSON.parse(this.dummyLoginVar);
+        this.tokenStorage.saveToken(this.loginDetails.token);
+        this.tokenStorage.saveUser(this.loginDetails);
+        // console.log("@@@@"+this.loginDetails.role);
+        this.tokenStorage.saveToken(this.loginDetails.token);
+        this.tokenStorage.saveUser(data);
+          if(this.loginDetails.role=='ROLE_NURSE' || this.loginDetails.role == 'physician'){
+            this.router.navigate(['/core/inbox/sharedinbox']);
+          } else if (this.loginDetails.role== 'admin'){
+            this.router.navigate(['/core/admin/hospitalUserList']);
+          } else if (this.loginDetails.role == 'ROLE_PATIENT'){
+            // this.router.navigate(['/core/visit/appointment_form']);
+            this.router.navigate(['/core']);
+          } else {
+            //this.alert.openSnackBar('Something went Wrong', '', 3000);
+          }
+          
+        },
+        err => {
+          //this.alert.openSnackBar(err.error.message, '', 3000);
+          console.log(err);
+        }
+      );
   }
 
   checkUser(e: any) {

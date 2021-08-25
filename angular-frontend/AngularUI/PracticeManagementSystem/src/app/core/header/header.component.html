@@ -18,21 +18,16 @@
     </button> 
     <mat-menu #notification="matMenu" >
         <button mat-menu-itemmatBadgeColor="warn">Appointment Schedule For Arvina james</button>
-        <!-- <button mat-menu-item>Appointment schedule for Snehal</button>
-        <button mat-menu-item>Appointment schedule for Kunal</button>
-        <button mat-menu-item>Appointment schedule for Rashi</button>
-        <button mat-menu-item>Appointment schedule for Shankar</button>    -->
      </mat-menu>
-    <div *ngFor="let item of profileData" fxLayout="row" >
-    <div fxLayout="row" style="font-size: 15px;" >
-    {{item.firstName}} {{item.lastName}} 
-      <button [matMenuTriggerFor]="profile" mat-icon-button>
-        <mat-icon>account_circle</mat-icon>
-    </button>
-    </div>
+    <div fxLayout="row" >
+        <div fxLayout="row" style="font-size: 15px;" >
+        <button [matMenuTriggerFor]="profile" mat-icon-button>
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        </div>
     </div>
     <mat-menu #profile="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item (click)="openDialog()">
             <mat-icon>account_box</mat-icon> Profile
         </button>
         <button mat-menu-item routerLink="login/changepassword">

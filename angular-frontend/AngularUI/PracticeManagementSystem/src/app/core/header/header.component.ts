@@ -28,11 +28,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     let authUser = sessionStorage.getItem('auth-user');
     if(authUser!==null)
-     this.authUserObj = JSON.parse(authUser);
+     //this.authUserObj = JSON.parse(authUser);
      this.userId = this.authUserObj.userId;
      this.role = this.authUserObj.role;
-     //console.log(this.userId)
-     if(this.role=='patient')
+     console.log("2222222222211111111"+this.authUserObj);
+     if(this.role=='ROLE_PATIENT')
      this.profileSVC.get_patient_profile(this.userId).subscribe(data => this.profileData.push(data)); 
      else
      this.profileSVC.get_hospital_user_profile(this.userId).subscribe(data => this.profileData.push(data)); 
