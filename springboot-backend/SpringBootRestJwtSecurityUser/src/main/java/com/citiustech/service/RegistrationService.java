@@ -31,14 +31,11 @@ public class RegistrationService {
 	@Autowired
 	private AdminRepository adminRepository;
 	
-	@Autowired
-	private PasswordEncoder encoder;
 	
 	
 	public String  registeredThePatient(SignUpRequest signupRequest) {
 		Patient patient = new Patient(
 				signupRequest.getEmail(),
-				encoder.encode(signupRequest.getPassword()),
 				signupRequest.getFirstName(),
 				signupRequest.getLastName(),
 				signupRequest.getContactNumber() ,
@@ -53,7 +50,6 @@ public class RegistrationService {
 	public String  registereTheNurse(SignUpRequest signupRequest) {
 		Nurse nurse = new Nurse(
 				signupRequest.getEmail(),
-				//encoder.encode(signupRequest.getPassword()),
 				signupRequest.getFirstName(),
 				signupRequest.getLastName(),
 				signupRequest.getContactNumber() ,
@@ -62,13 +58,12 @@ public class RegistrationService {
 		
 		nurseRepository.save(nurse);
 		
-		return "Employee registered successfully" ;
+		return "Nurse registered successfully" ;
 	}
 	
 	public String  registeredThePhysician(SignUpRequest signupRequest) {
 		Physician physician = new Physician(
 				signupRequest.getEmail(),
-				encoder.encode(signupRequest.getPassword()),
 				signupRequest.getFirstName(),
 				signupRequest.getLastName(),
 				signupRequest.getContactNumber() ,

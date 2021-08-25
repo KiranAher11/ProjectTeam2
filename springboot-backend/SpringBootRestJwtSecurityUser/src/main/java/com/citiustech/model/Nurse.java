@@ -42,11 +42,6 @@ public class Nurse{
 	@NonNull
 	private String email;
 
-	@NotBlank
-	@Size(max = 120)
-	@NonNull
-	private String password;
-
 	@NotNull
 	@Size(max = 25)
 	private String firstName;
@@ -63,9 +58,6 @@ public class Nurse{
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "users_roles_tab", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles;
 
 	public Nurse(@NotBlank @Size(max = 50) @Email @NonNull String email , @NotNull @Size(max = 25) String firstName,
 			@Size(max = 25) String lastName, @Size(max = 15) String contactNumber, EGender gender, Date dateOfBirth) {

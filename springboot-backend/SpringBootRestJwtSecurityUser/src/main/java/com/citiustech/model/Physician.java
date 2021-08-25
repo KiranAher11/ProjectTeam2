@@ -41,11 +41,6 @@ public class Physician {
 	@NonNull
 	private String email;
 
-	@NotBlank
-	@Size(max = 120)
-	@NonNull
-	private String password;
-
 	@NotNull
 	@Size(max = 25)
 	private String firstName;
@@ -66,12 +61,11 @@ public class Physician {
 
 	
 	public Physician(@NotBlank @Size(max = 50) @Email @NonNull String email,
-			@NotBlank @Size(max = 120) @NonNull String password, @NotNull @Size(max = 25) String firstName,
+			@NotNull @Size(max = 25) String firstName,
 			@Size(max = 25) String lastName, @Size(max = 15) String contactNumber, EGender gender, Date dateOfBirth,
 			String specialization) {
 		super();
 		this.email = email;
-		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.contactNumber = contactNumber;

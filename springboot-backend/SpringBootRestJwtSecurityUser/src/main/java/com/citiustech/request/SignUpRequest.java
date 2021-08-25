@@ -41,21 +41,19 @@ public class SignUpRequest {
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 
-	@NotBlank
-	@Size(max = 120)
-	@NonNull
 	@JsonIgnore
 	private String password;
 
-	//@NotBlank
-	@Size(max = 120)
-	//@NonNull
 	private String confirmPassword;
 	
-    //private HashSet<String> role;
-	
-	private String role;
+    private String role;
 	
 	private String specialization;
+
+	public SignUpRequest() {
+		
+	}
+	
+	
 
 }
