@@ -41,7 +41,6 @@ public class SignUpRequest {
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 
-	@JsonIgnore
 	private String password;
 
 	private String confirmPassword;
