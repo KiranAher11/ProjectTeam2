@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.citiustech.model.Kin;
 import com.citiustech.model.Nurse;
+import com.citiustech.model.Patient;
 import com.citiustech.model.PatientAddress;
 import com.citiustech.model.PatientAllergy;
 import com.citiustech.model.PatientDetails;
@@ -25,6 +26,7 @@ import com.citiustech.repo.KinRepository;
 import com.citiustech.repo.NurseRepository;
 import com.citiustech.repo.PatientAddressRepository;
 import com.citiustech.repo.PatientDetailsRepository;
+import com.citiustech.repo.PatientRepository;
 import com.citiustech.repo.PhysicianRepository;
 import com.citiustech.repo.UserRepository;
 import com.citiustech.request.LoginRequest;
@@ -48,6 +50,9 @@ public class PatientDetailsController {
 
 	@Autowired
 	private PhysicianRepository physicianRepository;
+	
+	@Autowired
+	private PatientRepository patientRepository;
 
 	@Autowired
 	private NurseRepository nurseRepository;
@@ -91,6 +96,18 @@ public class PatientDetailsController {
 				patientDetailsData.getPatientDetails().getDateOfBirth(), address, kin);
 
 		patientDetailsRepository.save(details);
+		
+		Optional<Patient> p1 = patientRepository.findByEmail(patientDetailsData.getPatientDetails().getEmail());
+		
+		if(p1.isPresent()) {
+			
+			Patient p = p1.get();
+
+			p.setPatientDetails(details);
+
+			patientRepository.save(p);
+
+		}
 		return ResponseEntity.ok(new MessageResponse("Patient Details Saved Successfully!"));
 	}
 
