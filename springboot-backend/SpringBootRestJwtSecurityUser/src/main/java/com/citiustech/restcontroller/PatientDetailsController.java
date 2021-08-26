@@ -76,6 +76,7 @@ public class PatientDetailsController {
 		kinRepository.save(kin);
 
 		// Patient's Allergy
+		//
 		PatientAllergy allergy = new PatientAllergy(patientDetailsData.getPatientAllergy().getAllergy_id(),
 				patientDetailsData.getPatientAllergy().getType());
 
